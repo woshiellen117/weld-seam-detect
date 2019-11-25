@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<!-- saved from url=(0130)https://oa.momenta.works/seeyon/collaboration/collaboration.do?method=newColl&templateId=-5800806588631070631&from=templateNewColl -->
+<html class="h100b over_hidden" style="height: 100%; overflow: hidden;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  var _language = 'zh_CN';
+</script>
+<link rel="stylesheet" href="./新建页面_files/seeyon.ui.layer-debug.css" id="layuicss-skinlayercss"></head><body class="h100b page_color" onunload="removeSessionMasterData(&#39;&#39;);" style="height: 100%; overflow: hidden; padding: 0px; margin: 0px; border: 0px; cursor: default;"><input type="hidden" id="fontNames" name="fontNames" value="">
+
+<link href="https://oa.momenta.works/seeyon/common/images/A8/favicon.ico?V=V6_1SP2_2017-11-10_4216684282" type="image/x-icon" rel="icon">
+<link rel="stylesheet" href="./新建页面_files/all-min.css">
+
+    <link rel="stylesheet" href="./新建页面_files/skin.css">
+
+
+<link rel="stylesheet" href="./新建页面_files/peoplecard.css">
+<link rel="stylesheet" type="text/css" href="./新建页面_files/dd.css">
+<link rel="stylesheet" type="text/css" href="./新建页面_files/default_common.css">
+<link rel="stylesheet" id="mainSkinCss" type="text/css" href="./新建页面_files/default.css">
+<link rel="stylesheet" href="./新建页面_files/touchTouch.css">
+<link href="./新建页面_files/select2.css" type="text/css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  var _ctxPath = '/seeyon', _ctxServer = 'https://oa.momenta.works:443/seeyon';
+  var _locale = 'zh_CN',_isDevelop = false,_sessionid = '5034BB46781AFBDCEFCB1BC76CF85D36',_isModalDialog = false;
+  var _editionI18nSuffix = '';
+  
+  var _resourceCode = "";
+  var seeyonProductId="1";
+  var systemfileUploadmaxsize="10485760";
+</script>
+
+<script type="text/javascript" src="./新建页面_files/i18n_zh_CN.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="./新建页面_files/all-min.js"></script>
+
+<script type="text/javascript" src="./新建页面_files/calendar-zh_CN.js"></script>
+
+<script type="text/javascript" src="./新建页面_files/main.do"></script>
+<script type="text/javascript">
+
+var addinMenus = new Array();
+
+
+$.ctx._currentPathId = 'collaboration_collaboration_newColl';
+$.ctx._pageSize = 20;
+
+$.ctx._emailShow = true; 
+$.ctx.fillmaps = null;
+$.releaseOnunload();
+</script>
+<script type="text/javascript" src="./新建页面_files/ajaxStub.js"></script>
+<script type="text/javascript" src="./新建页面_files/jquery.touchTouch-debug.js"></script>
+
+
+
+
+    
+	<title>新建页面</title>
+	
+	<script type="text/javascript" src="./新建页面_files/jquery.tokeninput.js"></script>
+	<link rel="stylesheet" href="./新建页面_files/token-input.css" type="text/css">
+	
+	
+
+
+
+
+
+<script type="text/javascript">
+  var _wfctxPath = '/seeyon';
+  var _ctxPath = '/seeyon';
+  var _wfcurrentUserId = '8845027544084465030'+'';
+  var hasWorkflowEvent = 'true';
+  var matchRequestToken= '-270499403359433558';
+</script>
+<script type="text/javascript" src="./新建页面_files/workflowDesigner_ajax.js"></script>
+
+<script type="text/javascript" src="./新建页面_files/workflowDesigner_api-min.js"></script>
+
+
+    
+
+<script type="text/javascript">
+/**
+ * 调用模板，如新建协同的调用模板页面,只能选择一个模板
+ * @param category {link TemplateCategory.TYPE}
+ * @param accountId 单位ID，不传值默认为当前用户的登录单位
+ * @return 模板ID，如12345
+ */
+function callTemplate(category,accountId,callback){
+    var ur='/seeyon/template/template.do?method=templateChoose&category='+category+'';
+    if(typeof(accountId)!='undefined'){
+        ur+='&accountId='+accountId;
+    }
+    var dialog = $.dialog({
+        url:ur,
+        width: 900,
+        height: 520,
+        title: "调用模板",//调用模板
+        targetWindow: getCtpTop(),
+        buttons: [{
+            text: "确定", //确定
+            btnType:1,
+            handler: function () {
+               isFormSubmit = false;
+               var rv = dialog.getReturnValue();
+               if("notclicktemplate" == rv){
+            	   $.messageBox({
+           	        'type' : 0,
+           	        'title':"系统提示",
+           	        'msg' : "请选择一个模板",
+           	        'imgType':2,
+           	        ok_fn : function() {
+           	        }
+           	      });
+            	  return;
+               }
+               
+               if(!rv){
+            	   return;//页面没加载完的时候直接返回
+               }
+               var __bodyType = rv["bodyType"];
+               rv = rv["templateId"];
+               
+               //本地是否安装的永中office，并且模板正文是wps正文则给出提示并返回
+               var isYozoWps = checkIsYoZoWps(__bodyType);
+               var isYoZoOffice = parent.isYoZoOffice();
+               if(isYozoWps && isYoZoOffice){
+            	   //对不起，您本地office软件不支持当前所选模板的正文类型！
+            	   $.alert("对不起，您本地office软件不支持当前所选模板的正文类型！");
+            	   return;
+               }
+               if(callback){
+            	   callback(rv);
+               }
+               dialog.close();
+            }
+        }, {
+            text: "取消", //取消
+            handler: function () {
+                isFormSubmit = true;
+                dialog.close();
+            }
+        }]
+    });
+}
+function checkIsYoZoWps(bodyType){
+	
+	var retValue=false;
+	if(bodyType && (bodyType == "43" || bodyType == "44")){
+		retValue = true; 
+	}
+	return retValue;
+}
+function setButtonStyle(){
+    $(":li").removeClass("current");
+}
+ 
+ //使用说明
+ function showWorkFlowDesc(){
+     $("#content_view_li").removeClass("current border_b last_tab");
+     $("#workflow_view_li").addClass("current border_b last_tab");
+     $("#display_content_view").hide();
+     $("#display_workflow_view").show();
+ } 
+
+
+ /**
+ *模板左右选择组件,参数没有就传null
+ *@param callback 回调函数
+ *@param isMul 是否支持多选，默认为true
+ *@param moduleType 模板分类，取ModuleType的枚举值Key
+ *@param accountId 单位ID，默认为当前登录单位ID
+ *@param scope 数据范围：枚举值["MemberUse","MaxScope","MemberAnalysis"]
+ *@param excludeTemplateIds : 不包含的模板ID，以，分隔的字符串，eg:123232,12121,43,21212 不宜太多，10个以下为好
+ *@param reportId:报表ID，F8专用
+ *@param rew
+ *@param isCanSelectCategory  是否支持选择文件夹，默认false
+ *@param isComponent  
+ *@param tids  选择的模板id
+ *@param maxSelect 允许最大选择模板数量
+ *@param memberId 选择模板的人员，如果不传递，默认当前人员
+ */
+/**
+*回显数据
+*var templateOrginalData=new Object();
+*templateOrginalData["ids"]  = ids;  ids:以,分隔的ID串
+*templateOrginalData["names"]= names; names:以数组Array的形式传入
+*templateOrginalData["namesDisplay"] = namesDisplay;模板组件返回给外层应用的显示数据，外层应用不需要传入
+*/
+ var templateOrginalData ; 
+ function templateChoose(callback,moduleType,isMul,accountId,scope,excludeTemplateIds,reportId,isCanSelectCategory,isComponent,tids,maxSelect,memberId){
+	  var ur='/seeyon/template/template.do?method=templateChooseMul';
+	  if(typeof(isComponent)=='undefined' || isComponent == null) ur+="&isComponent=Y";
+	  if(typeof(tids)!='undefined' && tids != null) ur+="&_tids="+tids;
+      if(typeof(moduleType)!='undefined' && moduleType != null) ur+="&moduleType="+moduleType;
+      if(typeof(isMul)!='undefined' && isMul!= null) ur+="&isMul="+isMul;
+      if(typeof(accountId)!='undefined' && accountId != null) ur+="&accountId="+accountId;
+      if(typeof(scope)!='undefined' && scope != null) ur+="&scope="+scope;
+      if(typeof(excludeTemplateIds)!='undefined' && excludeTemplateIds != null ) ur+="&excludeTemplateIds="+excludeTemplateIds;
+      if(typeof(reportId)!='undefined' && reportId != null) ur+="&reportId="+reportId;
+      if(typeof(isCanSelectCategory)!='undefined' && isCanSelectCategory != null) ur+="&isCanSelectCategory="+isCanSelectCategory;
+      if(typeof(memberId)!='undefined' && memberId != null) {
+    	  ur+="&memberId="+memberId;
+      }
+      var ids = "";
+      var names = "";
+      if(typeof(templateOrginalData)!='undefined' && templateOrginalData != null ){ 
+    	  ids = templateOrginalData["ids"];
+    	  names = templateOrginalData["names"];
+      }
+	  var dialog = $.dialog({
+          url : ur,
+          title: "选择模板", //选择模版
+          width: 760,
+          height: 530,
+          transParams: {'_tids':ids , '_tnames':names},
+          targetWindow:getCtpTop(),
+          buttons: [{
+              isEmphasize:true,
+              text: "确定", //确定
+              handler: function () {
+                templateOrginalData = dialog.getReturnValue();
+            	if(templateOrginalData["ids"].length<1){
+                    //您至少需要选择一个模版!
+            	    $.alert("您至少需要选择一个模版!");
+            		return;
+            	}
+            	if(maxSelect){
+            		var arrIds = templateOrginalData["ids"].split(",");
+                	if(arrIds.length > maxSelect){
+                		//超出了最大选择模板数量范围提示
+                	    $.alert("您选择了"+arrIds.length+"个模板，超出了最大选择限制:"+maxSelect+"个！");
+                		return;
+                	}
+            	}
+              	if(callback){
+              		callback(templateOrginalData["ids"],templateOrginalData["names"],templateOrginalData["namesDisplay"]);
+              	}
+                 dialog.close();
+              }
+          }, {
+              text: "取消", //取消
+              handler: function () {
+                  dialog.close();
+              }
+          }],
+          minParam: {
+              show: false
+          },
+          maxParam: {
+              show: false
+          }
+      }); 
+ }
+ function checkTemplateCanUse(templateId){
+     var coll = new colManager();	
+      var strFlag = coll.checkTemplateCanUse(templateId);
+	  if(strFlag != null && strFlag.flag =='cannot'){
+		 return false;
+	  }else{
+		 return true;
+     }
+ }
+</script>
+    
+
+<script>
+	//打印
+	//新建事项中打印映射
+	function newDoPrint(printFrom){
+		/* html(10,"标准格式正文HTML"),
+		form(20,"表单格式正文"),
+		txt(30,"text正文"),
+		officeWord(41,"officeWord正文"),
+		officeExcel(42,"officeExcel正文"),
+		wpsWord(43,"wpsWord正文"),
+		wpsExcel(44,"wpsExcel正文"); */
+		var type="";
+		if(printFrom.indexOf("summary")!=-1){
+	    	type = bodyType;
+		}
+		
+		if(printFrom=="newCol"){
+			var fnx;
+	        if($.browser.mozilla){
+	            fnx = document.getElementById("zwIframe").contentWindow;
+	        }else{
+	            fnx = document.zwIframe;
+	        }
+			var contentDiv = fnx.getMainBodyDataDiv$();
+		    type = $("#contentType",contentDiv).val();
+		}
+		var isHTML = false;
+		var isForm = false;
+		var preBodyFragArr="";
+		var afterBodyFragArr="";
+		if(type=="10"){ isHTML = true;}
+		if(type=="20"){ isForm = true;}         
+		if(isHTML){
+			var pl=newColPrint(printFrom);
+			printCallWay(pl.get(0),pl.get(1),"",printFrom);
+		}else{
+			if(isForm){//打印表单
+				if(printFrom=="newCol"){//新建页面打印
+					var isOffice = $("#zwOfficeIframe").css("display");
+				}else{
+				 	var isOffice = $("#componentDiv").contents().find("#zwOfficeIframe").css("display");
+				}
+				 if(isOffice=="block"){//如果是表单的office正文 
+					var prePrintDialog = $.dialog({
+						id: 'url',
+						url: "/seeyon/collTemplate/collTemplate.do?method=showPrintSelector&isForm=false",
+						width: 260,
+						height: 150,
+						title: "打印选项",
+						targetWindow:getCtpTop(),
+						buttons: [{
+						    text: "确定",
+						    handler: function () {
+						       var rv = prePrintDialog.getReturnValue();
+						       if(rv){
+							       if(rv == "mainpp"){//打印office 
+							    	   if(printFrom=="newCol"){
+							    		   window.frames["zwOfficeIframe"].window.officePrint();
+							    	   }else{
+							    	   	   window.frames["componentDiv"].frames["zwOfficeIframe"].window.officePrint();
+							    	   }
+									}else{//打印意见
+									   var pl=newColPrint(printFrom);
+									   printCallWay(pl.get(0),pl.get(1),"colPrint",printFrom);
+									}
+						       }
+						       prePrintDialog.close();
+						   }
+						}, {
+						    text: "取消",
+						    handler: function () {
+						        prePrintDialog.close();
+						    }
+						}]
+					});
+					$("#zwIframe").css("visibility","visible");
+				}else{
+ 				    var pl=newFormMainPrint(printFrom);
+				    printCallWay(pl.get(0),pl.get(1),"",printFrom); 
+				}
+			}else{
+				var prePrintDialog = $.dialog({
+					id: 'url',
+					url: "/seeyon/collTemplate/collTemplate.do?method=showPrintSelector&isForm="+isForm,
+					width: 260,
+					height: 120,
+					title: "打印选项",
+					targetWindow:getCtpTop(),
+					buttons: [{
+					    text: "确定",
+					    handler: function () {
+					       var rv = prePrintDialog.getReturnValue();
+					       if(rv){
+						       if(rv == "mainpp"){
+						    	    printCallWay(preBodyFragArr,afterBodyFragArr,"mainpp",printFrom);
+								}else{
+									var pl=newColPrint(printFrom);
+									printCallWay(pl.get(0),pl.get(1),"colPrint",printFrom);
+								}
+					       }
+					       prePrintDialog.close();
+					   }
+					}, {
+					    text: "取消",
+					    handler: function () {
+					        prePrintDialog.close();
+					    }
+					}]
+				});
+			}
+		}
+	}
+	function printCallWay(preBodyFragArr,afterBodyFragArr,printType,printFrom){
+		if(printFrom.indexOf("summary")!=-1){
+			if($.browser.mozilla){
+    			//fnx  =$(window.componentDiv)[0].document.getElementById("zwIframe").contentWindow;
+    			componentDiv.document.getElementById("zwIframe").contentWindow.$.content.print(preBodyFragArr,afterBodyFragArr,printType,printFrom);
+    		}else{
+    			//fnx =$(window.componentDiv)[0].document.zwIframe;
+    			componentDiv.document.zwIframe.$.content.print(preBodyFragArr,afterBodyFragArr,printType,printFrom);
+    		}
+		}else{
+			var fnx;
+	        if($.browser.mozilla){
+	            fnx = document.getElementById("zwIframe").contentWindow;
+	        }else{
+	            fnx = document.zwIframe;
+	        }
+	        fnx.$.content.print(preBodyFragArr,afterBodyFragArr,printType,printFrom);
+		}
+	}
+	//新建事项中打印 
+	var printSubFrag = "";
+	function newColPrint(printFrom){
+		//标题
+		try {
+			var printSubject = "标题"; //标题
+			var printsub = $("#subject").val();
+			printsub = "<center style='margin-top: 10px;'><span style='font-size:24px;line-height:24px;'>"
+					+ printsub.escapeHTML() + "</span></center>";
+			//标题文字样式与查时不一样. 
+			printSubFrag = new PrintFragment(printSubject, printsub);
+		} catch (e) {}
+		//发起者信息
+		var printSenderFrag = "";
+		try {
+			var printSenderInfo = "发起者信息"; //发起者信息
+			var printSender="";
+		    if(printFrom==="summary"){
+                printSender = $("#panleStart").html() +" ("+' '+') ';
+            }else if(printFrom==="newCol"){
+               printSender = '黄琳' + "(地图生产线 研发实习生) "; 
+            }
+			printSender+= $("#createDate").val();
+			printSender = "<center><span style='font-size:12px;line-height:24px;'>"
+					+ printSender + "</span></center>";
+			printSenderFrag = new PrintFragment(printSenderInfo,
+					printSender);
+		} catch (e) {}
+		var colAttachment1Frag ="";
+		try {
+		    var printAttachment = "附件"; //附件
+		    var attNumber = "";
+		    if (printFrom==="summary") {
+		        attNumber = getFileAttachmentNumber(0, "showAttFile");
+		    } else {
+		        attNumber = getFileAttachmentNumber(0, "Att");
+		    }
+			var colAttachment = "";
+			if (attNumber != 0) {
+				colAttachment = "<table class='margin_t_20'><tr><td valign='top' nowrap='nowrap'><div class='div-float' style='color: #335186; font-weight: bolder; font-size: 12px;'>"
+				        + "附<span class=w1em></span><span class=w1em></span>件"
+						+ " : ("
+						+ attNumber
+						+ ")</div></td><td valign='top'>"
+						+ getFileAttachmentName(0) + "</td></tr></table>";
+				colAttachment = cleanSpecial(colAttachment);
+				colAttachment = tempMethod(colAttachment);
+			}
+			colAttachment1Frag = new PrintFragment(printAttachment,
+					colAttachment);
+		} catch (e) {
+		}
+		
+		//关联文件和附件
+        var colAttachment2Frag ="";
+        try {
+            var printColMydocument = "关联文档"; //关联文档
+            var att2Number = getFileAttachmentNumber(2, 'Doc1');
+            var colMydocument = "";
+            if (att2Number != 0) {
+                colMydocument = "<table class='margin_t_20'><tr><td valign='top' nowrap='nowrap'><div class='div-float' style='color: #335186; font-weight: bolder; font-size: 12px;'>"
+                        + printColMydocument 
+                        + " : (" + att2Number + ")</div></td><td valign='top'>"
+                        + getFileAttachmentName(2)+"</td></tr></table><br>";
+                colMydocument = cleanSpecial(colMydocument);
+                colMydocument = tempMethod(colMydocument);
+            }
+            colAttachment2Frag = new PrintFragment(printColMydocument,
+                    colMydocument);
+        } catch (e) {
+        }
+
+		//附言
+		var sendOpinionFrag='';
+		if(printFrom!=="summary"){//在查看协同详细页面 意见中已经包含附言
+			try {
+			    var content = $("#fuyan #content_coll").val();
+			    var defaultValue = $.i18n("collaboration.newcoll.fywbzyl");
+			    if (content == defaultValue) {
+			        content = "";
+			    } else if ($("#fuyan #content_coll").val() != ""){
+			        content = $("#fuyan #content_coll").val().escapeHTML();
+			    }
+			    var printColOpinion = "发起人附言"; //附言
+			    var colOpinion = "<br/><div class='div-float body-detail-su' style='font-size: 12px; font-weight: bolder;'>"
+	                 + printColOpinion + " :</div></br>"
+	                 +"<div style='line-height: 20px; margin-bottom: 5px;'>" + content+"</div></br>";
+				colOpinion = cleanSpecial(colOpinion);
+				sendOpinionFrag = new PrintFragment(printColOpinion, colOpinion);
+			} catch (e) {
+			}
+		}
+		var pl1 = new ArrayList();
+		var pl2 = new ArrayList();
+		pl1.add(printSubFrag);
+		pl1.add(printSenderFrag);
+        pl2.add(colAttachment1Frag);
+		pl2.add(colAttachment2Frag);
+		if(printFrom!=="summary"){
+			pl2.add(sendOpinionFrag);
+		}
+		
+		var pl = new ArrayList();
+		pl.add(pl1);
+		pl.add(pl2);
+		return pl;
+	}
+	//新建事项中表单打印
+	function newFormMainPrint(printFrom){              
+		try {
+			//var printSubject = _("collaborationLang.print_subject");
+			//var printsub = document.getElementById("subject").value;
+			var printSubject = "标题"; //标题
+			var printsub = $("#subject").val();
+			printsub = "<center style='margin-top: 10px;'><span style='font-size:24px;line-height:24px;'>"
+                + printsub.escapeHTML() + "</span></center>";
+			//标题文字样式与查时不一样. 
+			var printSubFrag = new PrintFragment(printSubject, printsub);
+		} catch (e) {
+		}
+		try {
+			var printSenderInfo = "发起者信息"; //发起者信息
+			var printSender="";
+			if(printFrom==="summary"){
+                printSender = $("#panleStart").html() +" ("+' '+') ';
+            }else if(printFrom==="newCol"){
+                printSender = '黄琳' + "(地图生产线 研发实习生) "; 
+            }
+            printSender+= $("#createDate").val();
+            printSender = "<center><span style='font-size:12px;line-height:24px;'>"
+                    + printSender + "</span></center>";
+			var printSenderFrag = new PrintFragment(printSenderInfo, printSender);
+		} catch (e) {
+		}
+		try {		
+			//var printColOpinion = _("collaborationLang.print_senderNote");
+			var printColOpinion = "发起人附言"; //附言
+            //发起人附言
+			var content = $("#fuyan #content_coll").val();
+            var defaultValue = $.i18n("collaboration.newcoll.fywbzyl");
+            if (content == defaultValue) {
+                content = "";
+            } else if ($("#fuyan #content_coll").val() != ""){
+                content = $("#fuyan #content_coll").val().escapeHTML();
+            }
+             var colOpinion = "<br/><div class='div-float body-detail-su' style='font-size: 12px; font-weight: bolder;'>"
+                 + printColOpinion + " :</div><br />"
+                 + "<div style='line-height: 20px; margin-bottom: 5px;'>" + content+"</div></br>";
+            colOpinion = cleanSpecial(colOpinion);
+			var sendOpinionFrag = new PrintFragment(printColOpinion, colOpinion);
+		} catch (e) {
+		}
+		
+		try {
+			//var printAttachment = _("collaborationLang.print_attachment");
+			var printAttachment = "附件"; //附件
+			if (printFrom==="summary") {
+                attNumber = getFileAttachmentNumber(0, "showAttFile");
+            } else {
+                attNumber = getFileAttachmentNumber(0, "Att");
+            }
+			var colAttachment = "";
+            if (attNumber != 0) {
+                colAttachment = "<table class='margin_t_20'><tr><td valign='top' nowrap='nowrap'><div class='div-float' style='color: #335186; font-weight: bolder; font-size: 12px;'>"
+                        + "附<span class=w1em></span><span class=w1em></span>件"
+                        + " : ("
+                        + attNumber
+                        + ")</div></td><td valign='top'>"
+                        + getFileAttachmentName(0) + "</td></tr></table>";
+                colAttachment = cleanSpecial(colAttachment);
+                colAttachment = tempMethod(colAttachment);
+            }
+            
+			var colAttachment1Frag = new PrintFragment(printAttachment,
+					colAttachment);
+		} catch (e) {
+		}
+		try {
+            var printColMydocument = "关联文档"; //关联文档
+            var att2Number = getFileAttachmentNumber(2, 'Doc1');
+            var colMydocument = "";
+            if (att2Number != 0) {
+                colMydocument = "<table class='margin_t_20'><tr><td valign='top' nowrap='nowrap'><div class='div-float' style='color: #335186; font-weight: bolder; font-size: 12px;'>"
+                        + printColMydocument 
+                        + " : (" + att2Number + ")</div></td><td valign='top'>"
+                        + getFileAttachmentName(2)+"</td></tr></table><br>";
+                colMydocument = cleanSpecial(colMydocument);
+                colMydocument = tempMethod(colMydocument);
+            }
+            var colAttachment2Frag = new PrintFragment(printColMydocument,colMydocument);
+        } catch (e) {
+        }
+		
+		var pl1 = new ArrayList();
+		var pl2 = new ArrayList();
+		pl1.add(printSubFrag);
+		pl1.add(printSenderFrag);
+        pl2.add(colAttachment1Frag);
+		pl2.add(colAttachment2Frag);
+		pl2.add(sendOpinionFrag);
+		
+		var pl = new ArrayList();
+		pl.add(pl1);
+		pl.add(pl2);
+		return pl;
+	}
+	//临时方法为了解决在新建协同，内容为表单类型时，插入关联文档，打印页面关联文档图标不显示问题
+	//其实是getFileAttachmentName(2)中工程路径没获取到
+	var path="src=\'/seeyon/common/images";
+	function tempMethod(colMydocument){
+		if(colMydocument.indexOf("src=\'/common/images") >=0){
+			colMydocument=colMydocument.replace("src=\'/common/images", path);
+			colMydocument=tempMethod(colMydocument);
+		}
+		return colMydocument;
+	}
+</script>
+    
+<script type="text/javascript">
+    function beforeSubmit(affairid, attitude, content, object, sucessCallback, failedCallBack) {
+        //var r = new collaborationFormBindEventListener();
+
+        //if (!r.achieveTaskType) {
+            //sucessCallback();
+            //return;
+        //}
+        
+        //var taskType = r.achieveTaskType(affairid, attitude, content);
+        var taskType = callBackendMethod("collaborationFormBindEventListener","achieveTaskType",affairid, attitude, content);
+        //var taskType = callBackendMethod("formBindExtendClassEventListener","achieveTaskType",affairid, attitude, content);
+        if (taskType) {
+            var ds1;
+            if ("ext" == taskType) {	//开发高级-扩展类
+                //ds1 = r.preHandler(affairid, attitude, content);
+                //ds1 = callBackendMethod("collaborationFormBindEventListener","preHandler",affairid, attitude, content);
+                ds1 = callBackendMethod("formBindExtendClassEventListener","preHandler",affairid, attitude, content);
+                
+                if (ds1 && typeof (ds1) == "object") {
+                    if (ds1[0] == '1') {	//数组下标[0]值为1代表扩展类，数组下标[0]值2代表DEE，有返回代表审核失败，返回null代表正常
+                        if (object != null) {
+                            object.close();
+                        }
+                        var extContent=ds1[1].replace(/[\r\n]/g, "");	//扩展类返回值
+                        var dialog = $.dialog({
+                            url: "/seeyon/genericController.do?ViewPage=ctp/form/design/eventTip&content="
+                                    + encodeURIComponent(extContent),
+                            title: "审核结果",
+                            width: 300,
+                            height: 300,
+                            closeParam: {show: false},
+                            buttons: [
+                                {
+                                    text: "转审核意见",
+                                    id: "sure1",
+                                    handler: function () {
+                                        if (content != "") {
+                                            content = content + "\r\n" + "-----------------------------" + "\r\n";
+                                        }
+
+                                        try{
+                                            setContentDealComment(content + extContent);
+                                        } catch (e) {
+                                            
+                                        }
+                                        failedCallBack();
+                                        dialog.close();
+                                    }
+                                },
+                                {
+                                    text: "取消",
+                                    id: "exit1",
+                                    handler: function () {
+                                        failedCallBack();
+                                        dialog.close();
+                                    }
+                                }
+                            ]
+                        });
+                    }
+                }else{
+                  sucessCallback();
+                }
+            } else if ("dee" == taskType) {
+                executeDeeTask(null, affairid, attitude, content, null, "false", sucessCallback, failedCallBack);
+            } else {
+                sucessCallback();
+            }
+        } else {
+            sucessCallback();
+        }
+    }
+
+    function executeDeeTask(r, affairid, attitude, content, currentEventId, skipConcurrent, sucessCallback, failedCallBack) {
+        //var ds1 = r.preDeeHandler(affairid, attitude, content, currentEventId, skipConcurrent);
+        var ds1 = callBackendMethod("collaborationFormBindEventListener","preDeeHandler",affairid, attitude, content, currentEventId, skipConcurrent);
+        if (ds1) {
+            var blockFormWriteBackJson = ds1["blockFormWriteBackJson"];
+            if (blockFormWriteBackJson) {
+                var objs = blockFormWriteBackJson;
+                // 兼容google浏览器需要下面这一句替换掉google浏览器添加的pre
+                objs = objs.replace("<pre style=\"word-wrap: break-word; white-space: pre-wrap;\">", "").replace("</pre>", "").replace("<pre>", "");
+                var _objs = $.parseJSON(objs);
+                if (_objs.success == "true" || _objs.success == true) {
+                    // 如果当前权限因为高级权限改变，则将改变后的权限id记录在页面中
+                    if (_objs.viewRight != undefined && $("#rightId").val() != _objs.viewRight) {
+                        $("#rightId").val(_objs.viewRight);
+                        $("#img").removeClass("hidden").addClass("hidden");
+                    }
+                    _objs = _objs.results;
+                    if(typeof formCalcResultsBackFill!="undefined"){
+                        formCalcResultsBackFill(_objs);
+                    }else if(document.getElementById("zwIframe")!=null){
+                        document.getElementById("zwIframe").contentWindow.formCalcResultsBackFill(_objs);
+                    }else{
+                    	componentDiv.document.zwIframe.formCalcResultsBackFill(_objs);
+                    }
+              //      formCalcResultsBackFill(_objs);
+                } else {
+                    $.alert(_objs.errorMsg);
+                }
+            }
+
+            var hasNext = ds1["hasNext"];
+            var retSkipConcurrent = ds1["skipConcurrent"];
+            var retCurrentEventId = ds1["currentEventId"];
+            var blockInfoMsgType = ds1["blockInfoMsgType"];
+            var blockInfoReason = ds1["blockInfoReason"];
+            var exception = ds1["exception"];
+            if (exception) {
+                var dialog2 = $.dialog({
+                    url: "/seeyon/genericController.do?ViewPage=ctp/form/design/eventTip&content="
+                            + encodeURIComponent("DEE任务执行失败！"),
+                    title: "失败信息",
+                    width: 350,
+                    height: 100,
+                    closeParam: {show: false},
+                    buttons: [
+                        {
+                            text: "关闭",
+                            id: "exit1",
+                            handler: function () {
+                                if (failedCallBack && failedCallBack != "undefined") {
+                                    failedCallBack();
+                                }
+                                dialog2.close();
+                            }
+                        }
+                    ]
+                });
+            } else if (blockInfoMsgType == "error") {
+                var dialog1 = $.dialog({
+                    url: "/seeyon/genericController.do?ViewPage=ctp/form/design/eventTip&content="
+                            + encodeURIComponent(blockInfoReason),
+                    title: "失败信息",
+                    width: 350,
+                    height: 100,
+                    closeParam: {show: false},
+                    buttons: [
+                        {
+                            text: "关闭",
+                            id: "exit1",
+                            handler: function () {
+                                if (failedCallBack && failedCallBack != "undefined") {
+                                    failedCallBack();
+                                }
+                                dialog1.close();
+                            }
+                        }
+                    ]
+                });
+            } else if (blockInfoMsgType == "info") {
+                var dialog = $.dialog({
+                    url: "/seeyon/genericController.do?ViewPage=ctp/form/design/eventTip&content="
+                            + encodeURIComponent(blockInfoReason),
+                    title: "提示信息",
+                    width: 350,
+                    height: 100,
+                    closeParam: {show: false},
+                    buttons: [
+                        {
+                            text: "确定",
+                            id: "exit1",
+                            handler: function () {
+                                if (hasNext == "true") {
+                                    executeDeeTask(null, affairid, attitude, content, retCurrentEventId, retSkipConcurrent, sucessCallback, failedCallBack);
+                                } else {
+                                    sucessCallback();
+                                }
+                                dialog.close(dialog.index);
+                            }
+                        }
+                    ]
+                });
+            } else {
+                if (hasNext == "true") {
+                    executeDeeTask(null, affairid, attitude, content, retCurrentEventId, retSkipConcurrent, sucessCallback, failedCallBack);
+                } else {
+                    sucessCallback();
+                }
+            }
+        }
+    }
+</script>
+    
+		
+
+
+<script type="text/javascript">
+	var selectId;
+	var locationId;
+	/**projectProperties属性
+ 	* id->select对象的id(<select id='"+select_id+"'>)
+ 	* name->select对象的name属性
+ 	* disabled->是否置灰
+ 	* style 样式
+ 	* class 也是样式
+ 	* location_id->放置位置的id(<div id='"+location_id+"'>)
+ 	* relateProjectId->所选中的关联项目id
+ 	* fn-回调函数
+ 	*/
+	var initProjectSelect=function(selectProperties,location_id,relateProjectId,fn){
+		selectId=selectProperties["id"];
+		locationId=location_id;
+		var user=$.ctx.CurrentUser;
+		var projectQueryManager_=new projectQueryManager();
+		//ajax请求获取十三个标星项目,标星项目不足13个用一般项目补齐
+		var isTemFlag=selectProperties["isTemFlag"];
+		var isDisabled=selectProperties["disabled"];
+		//var retObj=projectQueryManager_.getMixProjectList(user,(isTemFlag!=undefined&&isDisabled!=undefined)?isTemFlag:"");
+		//第一步:隐藏域输入框,用于存储选择的项目id,点击更多的时候回填要用
+		var proHtml="<input id='myProject' type='hidden'/><select";
+		for(var p in selectProperties){
+			//第一步:遍历selectProperties对象,取出对应属性放入select中,拼接html
+			if(p!="disabled"){
+				proHtml+=" "+p+"='"+selectProperties[p]+"' ";
+			}
+		}
+		//第二步:第一列默认都显示无
+		proHtml+="><option id='none' title='无' value='-1' selected>无</option>";//无
+		var isList=false;
+		/* for(var i=0;i<retObj.length;i++){
+			if(retObj[i].id==relateProjectId){
+				isList=true;
+			}
+			var projectName=getProjectName(retObj[i].projectName);
+			//第三步:拼接option元素
+			proHtml+="<option title='"+projectName+"' value='"+retObj[i].id+"'>"+projectName+"</option>";
+		} */
+		//第三步:最后一列-更多
+		//if(retObj.length>=13){
+			proHtml+="<option title='请选择' id='allMore' dataType=''>请选择</option>";
+		//}
+		proHtml+="</select><div><div>";
+		//绑定select到指定位置
+		$("#"+location_id+"").html(proHtml);
+		$("#"+selectId).css("vertical-align","top");
+		bindEvent(fn);
+		if(relateProjectId!=""&&relateProjectId!=undefined&&relateProjectId!=-1){
+			//取项目名称
+			var projectName=projectQueryManager_.getProjectName(relateProjectId);
+			if(projectName != null){
+				relateProjectName=getProjectName(projectName);
+				$("#"+locationId+" #myProject").val(relateProjectId);
+				//在下拉列表中不存在,在更多下新增一项
+				var $hh= $("<option value='"+relateProjectId+"' title='"+relateProjectName+"' id='selProject'></option>").text(projectName);
+				fillProject($hh,selectProperties['id'],relateProjectId);
+			}
+		}
+		if(selectProperties["disabled"]!=undefined){
+			$("#"+selectProperties["id"]).attr("disabled",selectProperties["disabled"]);
+		}
+		//OA-70888IE7兼容：关联项目选择框错位
+		$("#"+location_id).addClass("common_selectbox_wrap");
+	}
+	/* 回填项目 */
+ 	function fillProjectById(select_id,projectId){
+ 		if(projectId!=""&&projectId!=undefined&&projectId!=-1){
+ 			var projectQueryManager_=new projectQueryManager();
+			//取项目名称
+			var projectNameInfo=projectQueryManager_.getProjectNameInfo(projectId);
+			if(projectNameInfo.existed){
+				var relateProjectName = getProjectName(projectNameInfo.projectName);
+				$("#"+locationId+" #myProject").val(projectId);
+				//在下拉列表中不存在,在更多下新增一项
+				var $hh = $("<option value='"+projectId+"' title='"+relateProjectName+"' id='selProject'></option>").text(projectNameInfo.projectName);
+		 		fillProject($hh,select_id,projectId,projectNameInfo.projectName);
+				$("#"+select_id+" #selProject").attr("selected",true);
+			}
+		}
+	}
+ 	
+	
+	function getProjectName(projectName){
+			projectName=projectName+"";
+			return projectName.escapeHTML();
+	}
+	//针对查看置灰情况,单独展现一个select下拉列表(只有一项option)
+	function initModify(selectProperties,location_id,relateProjectId){
+		var projectQueryManager_=new projectQueryManager();
+		//取项目名称
+		var relateProjectName=projectQueryManager_.getProjectName(relateProjectId);
+		if(relateProjectName != null){
+			var $proHtml = $("<select id='"+selectProperties['id']+"' disabled><option value='"+relateProjectId+"'></option></select>");
+			$proHtml.find("option").text(relateProjectName);
+			$("#"+location_id+"").html($proHtml);
+		}else{
+			var proHtml="<select id='"+selectProperties['id']+"' disabled><option value='-1'>无</option></select>";
+			$("#"+location_id+"").html(proHtml);
+		}
+	}
+	//回填所选中项目
+	function fillProject(hh,select_id,projectId,projectName){
+		var selProject=$("#"+select_id+" #selProject").length;
+        $("#"+select_id+" #allMore").attr("selected",false);
+		if(selProject==0){
+			//如果selProject元素不存在,新增一项
+			$("#"+select_id+" #allMore").before(hh);
+		}else{
+			//存在,只需替换掉值
+			$("#"+select_id+" #selProject").val(projectId);
+            $("#"+select_id+" #selProject").text(projectName);
+            $("#"+select_id+" #selProject").attr("title",projectName);
+		}
+		$("#"+select_id+"").val(projectId);
+	}
+	
+	function showProject(select_id,fn){
+		getA8Top().up = window;
+		var projectDialog=$.dialog({
+    	    id: 'projectDialog',
+    	    url: _ctxPath +"/project/project.do?method=showProjectList",
+    	    width: 780,
+    	    height: 450,
+    	    targetWindow:getCtpTop(),
+    	    title: "请选择关联项目",
+    	    closeParam:{
+    	   		show:true,
+    	    	handler:function(){
+              		closefillProject();
+    	    	}
+    	    },
+    	    buttons : [{
+              text : "确定",
+              handler : function() {
+              	var retObj=projectDialog.getReturnValue();
+              	if(retObj==false){
+              		$.alert("请选择关联项目");
+              		return false;
+              	}
+              	if(retObj!=null){
+              		var projectId=retObj.projectId;
+              		var projectName=getProjectName(retObj.projectName);
+              		var dataType=retObj.dataType;
+              		$("#"+locationId+" #myProject").val(projectId);
+              		//从弹出框选中的项目,回填选择更多
+              		var len=$("#"+select_id).find("option[value='"+projectId+"']").length;
+              		if(len>0){
+              			$("#"+select_id).val(projectId);
+              		}else{
+              			var $hh= $("<option value='"+projectId+"' title='"+projectName+"' id='selProject'></option>").text(retObj.projectName);
+              			fillProject($hh,select_id,projectId,retObj.projectName);
+              		}
+              		if($("#projectPhaseId").length == 1){
+	              		var _projectQueryManager_=new projectQueryManager();
+	              		var projectSummaryInfo = _projectQueryManager_.getProjectSummaryInfo(projectId);
+	              		if(projectSummaryInfo!=null){
+	              			$("#projectPhaseId").val(projectSummaryInfo.phaseId);
+		              	}
+              		}
+              	}
+              	if(fn){
+              		fn();
+              	}
+              	projectDialog.close();
+          	}
+        	}, {
+              text : "取消",
+              handler : function() {
+              		closefillProject();
+                	projectDialog.close();
+             }
+            }]
+    	});
+	}
+	//点击取消和关闭按钮时,回填回原来的项目
+	function closefillProject(){
+		var proId=$("#"+locationId+" #myProject").val();
+		if(proId!=""){
+			$("#"+selectId).val(proId);
+		}else{
+			//初始值选择的是"无",点击取消也需要回填到"无"
+        	$("#"+selectId).val("-1");
+		}
+	}
+	//关联项目回调函数
+	function getProject(){
+		var obj=new Object();
+		obj.projectId=$("#"+locationId+" #myProject").val();
+		//obj.dataType=$("#"+selectId).attr("dataType");
+		return obj;
+	}
+	
+	function bindEvent(fn){
+        $("#"+selectId).live("change",function(){
+			var item=$("#"+selectId+"").find("option:selected");
+			var itemId=item.attr("id");
+			var itemValue=item.val();
+			if("allMore"!=itemId){
+				$("#"+locationId+" #myProject").val(itemValue);
+				//当选择"无'，需要查询对应的项目阶段
+				if(itemValue!=-1){
+					var _projectQueryManager_=new projectQueryManager();
+					var projectSummaryInfo = _projectQueryManager_.getProjectSummaryInfo(itemValue);
+	          		if(projectSummaryInfo==null){
+		      			$("#projectPhaseId").val(1);
+	              	}else if(projectSummaryInfo!=null){
+	              		$("#projectPhaseId").val(projectSummaryInfo.phaseId);
+	                 }
+				}else{
+		      			$("#projectPhaseId").val(1);
+				}
+				if(fn){
+					fn();
+				}
+			}else{
+				showProject(selectId,fn);
+			}
+		})
+	}
+</script>
+	
+	
+	
+    
+    
+    
+    
+    
+    
+    
+     <!-- 当前的模板Id,个人模板的话是自己的Id,不是其父模板的Id -->
+    
+	
+	<script type="text/javascript" charset="UTF-8" src="./新建页面_files/newCollaboration.js"></script>
+    
+        <link rel="stylesheet" href="./新建页面_files/dataRelation.css">
+        <script type="text/javascript" charset="UTF-8" src="./新建页面_files/dataRelation.js"></script>
+    
+	
+	<style type="text/css">
+ .bgcolor{
+    background-color:transparent;
+ }
+ 
+ .align_left{
+                text-align: left;
+            }
+            .common_contact{
+                width: 100%;
+                display: inline-block;
+                height: auto;
+                overflow: auto;
+            }
+            .common_contact li{
+                font-size: 12px;
+            }
+            .common_contact li.common_contact_li{
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
+            .common_contact li.common_contact_li .ico16{
+                margin-right: 8px;
+            }
+            .common_contact .common_contact_title{
+                height: 36px;
+                line-height: 36px;
+                background: #e6e9ec;
+                padding-left: 16px;
+                font-size: 14px;
+                margin-bottom: 15px;
+                color:#797b73;
+            }
+            .common_people{
+                color:#333;
+            }
+            .set_color_666{
+                color:#666;
+            }
+            .common_contact ul li{
+                height: 20px;
+                line-height: 20px;
+                padding-left: 26px;
+                color:#666;
+            }
+            .common_contact ul li:hover{
+                background: #3498da;
+                color: #fff;
+            }
+            .layout_east{
+                position: relative;
+            }
+            .shou{
+                width: 7px;
+                height: 48px;
+                background: #ccc;
+                position: absolute;
+                left: 0;
+                top: 40%;
+
+            }
+            .hide_span,.hide_span_people{
+                position: absolute;
+                left: 15px;
+                display: none;
+            }
+            .hide_span{
+                top: 50%;
+                margin-top:-33px;
+            }
+            .hide_span_people{
+                top: 50%;
+                margin-top:-40px;
+            }
+            .common_button.common_button_icon.comp.edit_flow:hover{
+                color: #333;
+            }
+            .common_contact_title{
+                height:36px;
+                line-height:36px;
+                background:#e6e9ec;
+                padding-left:16px;
+                font-size:14px;
+                color:#797b73;
+            }
+            
+            #north_area_h{
+                background: #f7f7f7;
+            }
+            #process_info_div{
+                position: relative;
+                height: 26px !important;
+                font-size: 14px;
+                margin-top: 5px;
+            }
+            #process_info_div .ico16{
+                position: absolute;
+                right: 3px;
+                bottom: 6px;
+                z-index: 2;
+            }
+            .attachmentArea{
+            	max-height: 90px;
+            	overflow-x: hidden;
+            	overflow-y: auto;
+            }
+/* include页面引入其他样式，导致页面checkbox公共样式被覆盖，故这里做样式重置 */
+     .radio_com {
+        margin-right: 6px;
+    }
+    .span-ellipsis{
+        width:210px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: normal;
+        white-space: nowrap;
+        display: inline-block;
+    }
+</style>
+	<script type="text/javascript" src="./新建页面_files/laytpl.js"></script>
+	<script type="text/javascript">
+			var pTemp = {"nodePolicy":'\u007b\u0022cancel\u0022:true,\u0022editWorkFlow\u0022:true,\u0022forward\u0022:true,\u0022pigeonhole\u0022:true,\u0022print\u0022:true,\u0022reMove\u0022:true,\u0022repeatSend\u0022:true,\u0022uploadAttachment\u0022:true,\u0022uploadRelDoc\u0022:true\u007d',"jval":"\u007b\u0022hasDocPlugin\u0022:true,\u0022hasProjectPlugin\u0022:true\u007d"};
+			var isV5Member = true;
+			var hasDoc = "true";
+			var DR = "";
+			var summaryId = "6548427826934350405";
+			var _summaryId = "6548427826934350405";
+			var tps = '';
+			var senderId = "";
+			var nodePolicy = "newCol";;
+			//取新建节点权限
+			var nodePolicy = $.parseJSON(pTemp.nodePolicy);
+			var officecanPrint = nodePolicy.print.toString();
+			var affairState = "-1";
+	   		// 正文组件判断，新建页面
+  			var bIsContentNewPage = true;
+	   		var openFrom = "newColl";//数据关联使用
+			var bIsClearContentPadding = false;
+			var hasColSubject = false;//判断是否有标题规则
+			var checkPDFIsNull=false; //保存个人模板的标记，个人协同模板允PDF正文许为空
+			//服务器时间和本地时间的差异
+			var server2LocalTime = 1574048482528 - new Date().getTime();
+			var isForm ='false';
+			var isFromTemplate = 'false';
+			var isSystemTemplete = 'true';
+			//移动newCollaboration.js.jsp 变量开始
+			var zdgzid ="";
+			var htdbry ="";
+			var officeOcxUploadMaxSize = "8192";
+			var bodyType = '20';
+			var paramfrom = "templateNewColl";
+            var from = "";
+			var wfXmlInfo = '';
+			var _callTemplateId = '-5800806588631070631';
+			var templateId = '-5800806588631070631';
+			//系统模板ID,如果本身是系统模板取自己的ID，如果是个人模板存为的系统模板，取父模板ID
+			var systemTemplateId = '-5800806588631070631';
+			var canCopy = 'true';
+			var _summaryActivityId = "start";
+			var affairId = "-1";
+			var isformTemplate = 'true';
+			var uuidlong = '-7270878193761041289';
+			var ishideconotentType = ('true' == 'true' && ('template' != 'workflow')) || ('' =='1');
+			var istranstocol = '' =='true';
+			var transOfficeId ='' != '';
+			var isneedsendcheck = '0' != '2' && '' != '16';
+			var _subState = '';
+			var isSysTem = true;
+			var isTemFlag = 'true';
+			var importantL = '1';
+			var deadl = '0';
+			var formAppid = '8584456628843137360';
+			var advanceR = '0';
+			var vobjtrackids = "";
+			var vobjcolsupnames = '';
+			var vobjcolSupors = '';
+			var vobjcolsupDate = '';
+			var sumcanforward = !"true";
+			var sumcanmodify = !"true";
+			var sumcanEdit = !"false";
+			var sumcanEditAtt = !"false";
+			var sumcanArchive = !"true";
+			var sumcanautostop = "false" && "false" =="0";
+			var vobjreadonly = 'false' == 'true';
+			var isneedsetDetailwhenwftem =  '-5800806588631070631' && 'template' =='workflow' && 'true'=='true';
+			var vobjparentColTem = 'true'=='true';
+			var vobjparenttexttype = 'template' =='text';
+			var waitsendflag = "templateNewColl" != 'waitSend';
+			var waitsendflagnew = "templateNewColl" == 'waitSend' && _subState !='1';
+			var vobjparentwftem = 'false' =='true';
+			var vobjstanddur = '无';
+			var frompeoplecardflag = false;
+			var peoplecardinfoID = '';
+			var peoplecardinfoname = '';
+			var peoplecardinfoaccountid = '';
+			var issameaccountflag = false;
+			var accountobjsn = '';
+			var warnforsupervise = '' == 'true' && true;
+			var tracktypeeq2 = false;
+			var formRecordid  = "" ;
+			var fgzids = '';
+			var tracktypeeq0 = false;
+			var savedrafttemVal = '' != '16';
+			var issystemtemflag = 'true' == 'true';
+			var curlocationPath = '/seeyon';
+			var useforsavetemsubjectflag = "实习生填写工时";
+			var useforsavetemsubject = "实习生填写工时";
+			var saveastemtype ='template';
+			var pipeinfo1 = v3x.getMessage("collaborationLang.collaboration_alertPigeonholeItemFailure");
+			var pipeinfo2 = v3x.getMessage("collaborationLang.file_save");
+			var pipeinfo3 = v3x.getMessage("collaborationLang.submit");
+			var pipeinfo4 = v3x.getMessage("collaborationLang.collaboration_alertPigeonholeItemFailure");
+			var pipeinfo5 = v3x.getMessage("collaborationLang.cancel");
+			var contentViewState = '1';
+			var ordinalTemplateIsSys ='';
+			var superviseTip = "督办主题包含特殊字符(|\"<>)请重新录入!";
+			var _expansion ="展开";
+			var _collapse ="收起";
+			var customSetTrackFlag = 'true' == 'true';
+			var _bizConfig = "false" == "true";
+			var projectId ="";
+			var _isProjectDisabled = false;
+			if(!true){//非A8人员
+			    _isProjectDisabled = true;
+			}
+			var _isResendFlag = false;
+			var newColl = true;
+			var affairMemberId = '8845027544084465030';
+			var affairMemberName = '黄琳';
+			var _affairMemberId = affairMemberId;
+			//移动newCollaboration.js.jsp 变量结束
+			//工作流相关的信息  摘自 include_variables.jsp 开始
+			var mtCfg = [{"name":"标准正文","mainbodyType":"10"},{"name":"Word正文","mainbodyType":"41"},{"name":"Excel正文","mainbodyType":"42"},{"name":"Wps文字","mainbodyType":"43"},{"name":"Wps表格","mainbodyType":"44"},{"name":"Pdf 正文","mainbodyType":"45"}];
+			var useWorkflow = "true";
+			
+				var wfItemId = '-1';
+				var wfProcessId = '';
+				var wfProcessTemplateId = '4459468326851789890';
+				var wfActivityId = '-1';
+				var CurrentUserId = '8845027544084465030';
+				var wfCaseId = '-1';
+				var loginAccount = '670869647114347';
+				var moduleTypeName = 'collaboration';
+			
+			//工作流相关的信息  摘自 include_variables.jsp 结束
+			//***************
+			if(getCtpTopFromOpener(window)!=null){  //如果顶层不为空
+				//lilong 快速选人变量 0326
+				getCtpTopFromOpener(window).distroy_token = false;
+				
+				    
+				    //正常但是有模板，需要屏蔽token
+				    getCtpTopFromOpener(window).distroy_token = true;
+				    
+				
+				
+				if((paramfrom && paramfrom == 'resend')  //重复发起 OA-55334
+						|| (isTemFlag && isTemFlag == 'true') //个人模板 OA-55428
+						|| (paramfrom && paramfrom == 'waitSend')){  //OA-55492 撤销或者保存待发过来的屏蔽
+	
+					getCtpTopFromOpener(window).distroy_token = true;
+	
+				}
+				if(frompeoplecardflag){
+					getCtpTopFromOpener(window).distroy_token = true;
+				}
+				
+				if(paramfrom == 'a8genius'){
+					 getCtpTopFromOpener(window).distroy_token = true;
+				}
+				
+				
+			}
+			$("#process_info_div").click(function(){
+				$("#token-input-process_info").css("color","#111");
+			});
+			$("#token-input-process_info").live("keydown", function(){
+				$("#token-input-process_info").css("color","#111");
+			});
+			
+			var defaultNodeName = "collaboration";
+			var defaultNodeLable = "协同";
+			var isHistoryFlag = "false";
+			//**************
+			
+			var canTrackWorkFlowValue = 0;
+			
+				canTrackWorkFlowValue = 0;
+			
+            
+            
+	</script>
+
+
+
+<form method="post" id="sendForm" name="sendForm" action="https://oa.momenta.works/seeyon/collaboration/collaboration.do?method=send&amp;from=templateNewColl&amp;reqFrom=" class="h100b">
+    <div id="newColl_layout" class="comp" comp="type:&#39;layout&#39;" comptype="layout" style="overflow: hidden; position: relative; padding: 0px; margin: 0px; border: 0px; height: 100%;">
+        <div class="layout_north f0f0f0" layout="height:41,border:false,sprit:false" id="north1" style="height: 41px; left: 0px; top: 0px; border-width: 0px; width: 864px; z-index: 1; display: block;">
+            
+		    <div class="padding_l_5 border_b">
+			    <div id="toolbar"><div class="common_toolbar_box clearfix" style="_display:inline; border-top-width:0px;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-color:#b6b6b6;border-style:solid;"><div id="toolbar_92462559" class="toolbar_l clearfix"><a id="saveDraft_a" class="" onclick="toolbarsaveDraft_aClick()" style=""><em id="saveDraft_em" class="ico16 save_traft_16"></em><span id="saveDraft_span" class="menu_span" title="保存待发">保存待发</span></a><a id="refresh2_a" class="" onclick="toolbarrefresh2_aClick()" style=""><em id="refresh2_em" class="ico16 call_template_16"></em><span id="refresh2_span" class="menu_span" title="调用模板">调用模板</span></a><a id="conotentType_a" class="common_menu_dis" bakonmouseenter="sub_conotentTypemouseenter()" bakonmouseleave="sub_conotentTypemouseleave()" style="display: none;"><em id="conotentType_em" class="ico16 text_type_16"></em><span id="conotentType_span" class="menu_span" title="正文类型">正文类型</span><em id="conotentType" class="sub_ico" style="margin-right:-5px;margin-left:5px;"></em></a><a id="refresh1_a" class="" onclick="toolbarrefresh1_aClick()" style=""><em id="refresh1_em" class="ico16 save_template_16"></em><span id="refresh1_span" class="menu_span" title="存为模板">存为模板</span></a><a id="print_a" class="" onclick="toolbarprint_aClick()" style=""><em id="print_em" class="ico16 print_16"></em><span id="print_span" class="menu_span" title="打印">打印</span></a></div></div></div>
+		    </div>
+		    
+        </div>
+        <div class="layout_center" id="centerBar" style="overflow-y: hidden; background: rgb(255, 255, 255); height: 1367px; left: 0px; top: 41px; width: 512px; border-width: 0px; z-index: 1; display: block;" layout="">
+        	<div id="north_area_h">
+			    <!--当前位置-->
+			    
+                    <div class="comp" comp="type:&#39;breadcrumb&#39;,comptype:&#39;location&#39;,code:&#39;F01_newColl&#39;" comptype="breadcrumb"></div>
+                
+                 
+			  
+			    <!-- <div id="colMainData" class="form_area new_page"> -->
+			    <div id="colMainData" class="form_area padding_t_10">
+			        
+				    
+				    
+				    
+				    <input type="hidden" id="temformParentId" name="temformParentId" value="">
+				    <input type="hidden" id="resend" name="resend" value="false">
+				    <input type="hidden" id="newBusiness" name="newBusiness" value="1">
+				    <input type="hidden" id="id" name="id" value="6548427826934350405">
+				    <input type="hidden" id="parentSummaryId" name="parentSummaryId" value="">
+					<input type="hidden" id="attachmentArchiveId" name="attachmentArchiveId" value="">
+				    <input type="hidden" id="tId" name="tId" value="-5800806588631070631">
+				    <input type="hidden" id="curTemId" name="curTemId" value="-5800806588631070631">
+				    <input type="hidden" id="resentTime" name="resentTime" value="">
+				    <input type="hidden" id="archiveId" name="archiveId" value="">
+				    <input type="hidden" id="prevArchiveId" name="prevArchiveId" value="">
+				    <!-- 当前处理人信息 -->
+				    <input type="hidden" id="currentNodesInfo" name="currentNodesInfo" value="">
+
+				    <input type="hidden" id="tembodyType" name="tembodyType" value="20">
+				    <input type="hidden" id="formtitle" name="formtitle" value="实习生填写工时">
+				    <input type="hidden" id="saveAsTempleteSubject" name="saveAsTempleteSubject" value="">
+				    <input type="hidden" id="phaseId" name="phaseId" value="">
+                    <input type="hidden" id="caseId" name="caseId" value="">
+                    <input type="hidden" id="currentaffairId" name="currentaffairId" value="">
+                    <input type="hidden" id="createDate" name="createDate" value="2019-11-18 11:41:22">
+                    <input type="hidden" id="useForSaveTemplate" name="useForSaveTemplate" value="no">
+                    <input type="hidden" id="oldProcessId" name="oldProcessId" value="">
+                    <input type="hidden" id="temCanSupervise" name="temCanSupervise" value="true">
+                    <input type="hidden" id="standardDuration" name="standardDuration" value="0">
+                    <input type="hidden" id="forwardMember" name="forwardMember" value="">
+                    <input type="hidden" id="saveAsFlag" name="saveAsFlag">
+                    <input type="hidden" id="transtoColl" name="transtoColl" value="0">
+                    <input type="hidden" id="bzmenuId" name="bzmenuId" value="">
+                    <input type="hidden" id="newflowType" name="newflowType" value="0">
+                    <input type="hidden" id="contentViewState" name="contentViewState" value="1">
+                    <input type="hidden" id="isOpenWindow" name="isOpenWindow" value="">
+                    <input type="hidden" id="canTrackWorkFlow" name="canTrackWorkFlow" value="0">
+                    <input type="hidden" id="bodyType" name="bodyType">
+                    <input type="hidden" id="formRecordid" name="formRecordid">
+                    <input type="hidden" id="formAppid" name="formAppid" value="8584456628843137360">
+                    <input type="hidden" id="formOperationId" name="formOperationId" value="8306104016536486102">
+                    <input type="hidden" id="formParentid" name="formParentid" value="">
+                                        
+                    
+                    <input type="hidden" id="contentSaveId" name="contentSaveId">
+                    <input type="hidden" id="contentDataId" name="contentDataId">
+                    <input type="hidden" id="contentTemplateId" name="contentTemplateId">
+                    <input type="hidden" id="contentRightId" name="contentRightId">
+                    <input type="hidden" id="contentZWID" name="contentZWID" value="0">
+                    <input type="hidden" id="contentSwitchId" name="contentSwitchId" value="">
+                    <input type="hidden" id="DR" name="DR" value="">
+                    
+                    <input type="hidden" id="advancePigeonhole" name="advancePigeonhole" value="">
+                    <input type="hidden" id="contentIdUseDelete" name="contentIdUseDelete" value="0">
+ 				    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+			            <tbody><tr>
+				            <td rowspan="2" width="1%" nowrap="nowrap" class="padding_l_10">
+				            	<a id="sendId" onclick="send()" class="margin_r_10 display_inline-block align_center new_btn">发送</a>
+				            </td>
+				            <th nowrap="nowrap" width="1%" class="">标题：</th>
+						    
+							    
+				           	    
+                                    <!-- 标题 -->
+				                    <td style="width:100%;"><div class="common_txtbox_wrap"><input id="subject" inputname="标题" class="" type="text" name="subject" title="点击此处填写标题" value="实习生填写工时(黄琳 2019-11-18 11:41)" defaultvalue="请输入标题" style="height:26px;line-height:26px;"></div></td>
+							    
+				            
+				            <td width="80" class="padding_l_5">
+				                <div class="common_selectbox_wrap">
+                                   <!--  <select id="importantLevel" name="importantLevel" class="codecfg "
+                                        codecfg="codeId:'common_importance',defaultValue:1">
+                                    </select> -->
+
+										<select name="importantLevel" id="importantLevel">
+											<option value="1" selected="" itemname="1">普通</option>
+<option value="2" itemname="1">重要</option>
+<option value="3" itemname="1">非常重要</option>
+
+
+										</select>
+									</div>
+				            </td>
+                            <!-- 关联项目 -->
+                            
+							    
+				           	    
+				           	    <th width="1%" class=" padding_l_25" nowrap="nowrap">
+			           	    		
+		            					关联项目：
+		            				
+								</th>
+			            		<td width="150" class="padding_r_20">
+			           	    		
+				            			<div class="common_selectbox_wrap" id="selectRelatepro" style="width:150px;"><input id="myProject" type="hidden"><select id="selectProjectId" name="projectIdSelect" class="input-100per" istemflag="true" style="vertical-align: top;"><option id="none" title="无" value="-1" selected="">无</option><option title="请选择" id="allMore" datatype="">请选择</option></select><div><div></div></div></div>
+										<input type="hidden" id="projectId" name="projectId" value="">
+					            	
+			            		</td>
+				           	    
+				            
+				           
+			            </tr><tr>
+				            <th width="" nowrap="nowrap" class="">流程：</th>
+				            <td width=""><div id="process_info_div" class="common_txtbox_wrap common_txtbox_wrap_dis">
+                                <input readonly="readonly" class="w100b validate" type="text" id="process_info" defaultvalue="&lt;点击新建流程&gt;" disabled="" value="mentor-新1(知会)" name="process_info" title="点击此处新建流程">
+                                </div>
+                            </td>
+				            <td width="" class="padding_l_5">
+				                <div id="workflowInfo" style="height:26px;margin-top:5px;" onclick="workflowClick()">
+				                
+				                	
+				                	
+                                    
+				            	    <a id="workflow_btn" style="border-radius:0; background:#FFF;height:24px;line-height:24px;color:#333;" comp="type:&#39;workflowEdit&#39;,defaultPolicyId:&#39;collaboration&#39;,defaultPolicyName:&#39;协同&#39;,moduleType:&#39;collaboration&#39;,isTemplate:true,isView:true,workflowId:&#39;4459468326851789890&#39;" class="common_button common_button_icon comp edit_flow" href="https://oa.momenta.works/seeyon/collaboration/collaboration.do?method=newColl&amp;templateId=-5800806588631070631&amp;from=templateNewColl#" comptype="workflowEdit">
+                                            <em class="ico16 process_16"> </em>查看流程</a><!-- 查看流程 -->
+                                    
+                                    
+				                </div>
+				            </td>
+				            <th nowrap="nowrap" width="1%" class=" padding_l_25">
+				            	
+				            		预归档到：
+				            	
+				            </th>
+				            <td width="150" class="padding_r_25" style="padding-right:20px;padding-top:4px;">
+				          	    
+					          	    <div class="common_selectbox_wrap" style="width:150px;">
+	
+					          	    
+					          	   	<input type="hidden" name="isTemplateHasPigeonholePath" id="isTemplateHasPigeonholePath" value="false">
+	
+					          	    <select id="colPigeonhole" title="" class="input-100per" onchange="pigeonholeEvent(this)">
+								        <option id="defaultOption" value="1">无</option>
+                                        <!-- 请选择 -->
+								        <option id="modifyOption" value="2">--请选择--</option>
+								        
+								    </select>
+								    </div>
+								 
+						    </td>
+			            </tr>
+			          
+			            </tbody></table>
+			             <!--更多-->
+			            <table class="newinfo_more hidden" border="0" cellspacing="0" cellpadding="0" width="100%" style=" margin-top:10px;">
+			            	<tbody><tr>
+			            		<th nowrap="nowrap" class="">
+                                <div class="common_checkbox_box clearfix ">
+                                    <label class="hand" for="canTrack">
+                                        <input id="canTrack" name="canTrack" onclick="trackOrnot()" value="1" class="radio_com" type="checkbox" checked="checked">跟踪：</label>
+                                </div>
+	                            </th>
+	                            <td nowrap="nowrap">
+	                                <div class="common_checkbox_box clearfix ">
+	                                    <label class="margin_r_10 hand" for="radioall">
+	                                        <input id="radioall" name="radioperson" onclick="_hiddenPartTrackNameInput()" value="0" type="radio" class="radio_com">全部人员</label>
+	                                    <label class="margin_r_10 hand" for="radiopart">
+	                                        <input id="radiopart" name="radioperson" onclick="trackPart()" value="0" type="radio" class="radio_com">指定人员</label>
+	                                        <input type="hidden" id="zdgzry" name="zdgzry">
+	
+	                                </div>
+	                            </td>
+	                            <td style="padding-left:6px;"><input type="text" style="display: none; width:131px;" id="zdgzryName" readonly="" name="zdgzryName" size="15" onclick="$(&#39;#radiopart&#39;).click()"></td>
+					           
+                             
+                                <!-- 允许操作 -->
+                                <th nowrap="nowrap" rowspan="3" valign="top" align="right" class=" padding_l_25" style="padding-top:3px;">允许操作：</th>
+                                <td width="" rowspan="3" valign="top">
+                                    <!--规则：系统流程模板改变流程置灰   其余4个都可以修改，不置灰的。
+                                		系统格式模板改变流程可以修改不置灰，其他都灰色不能修改。-->
+                                    <div class="common_checkbox_box clearfix " style="width:290px;">
+                                       <span style="display:inline-block;margin-top:10px;">
+                                        <label class="margin_r_10  hand display_block left" style="min-width:68px;" for="canForward"><input id="canForward" value="1" disabled="" class="radio_com" type="checkbox" checked="">转发</label>
+
+				           	    		
+                                        	<label class="margin_r_10  hand display_block right" for="canArchive"><input id="canArchive" value="1" disabled="" class="radio_com" type="checkbox" checked="">归档</label>
+                                        
+                                        </span>
+                                        	
+                                       <span style="display:inline-block;margin-top:7px;">
+                                        <label class="margin_r_10 hand display_block left" for="canEditAttachment"><input id="canEditAttachment" value="1" disabled="" class="radio_com" type="checkbox">修改附件</label>
+                                        
+                                        <label class="display_block left margin_r_10" for="canEdit"><input id="canEdit" value="1" disabled="" class="radio_com" type="checkbox">修改正文</label>
+                                        <label class="margin_r_10 hand display_block left" for="canModify"><input id="canModify" value="1" disabled="" class="radio_com" type="checkbox" checked="">改变流程</label>
+                                       </span>
+                                        
+                                       
+                                        <label class="hand display_block left" for="canMergeDeal" style="margin-top:7px;"><input id="canMergeDeal" disabled="disabled" value="1" class="radio_com" type="checkbox" checked="">处理人连续为同一人时，合并处理</label>
+                                      <label class="margin_t_10 hand display_block left" style="margin-top:10px;" for="canAnyMerge"><input id="canAnyMerge" disabled="disabled" value="1" class="radio_com" type="checkbox">处理人与前面任一处理人相同时，合并处理</label> 
+                                    </div>
+                                </td>
+								<!-- 督办人员 -->
+				            	<th width="1%" nowrap="nowrap" class="padding_l_25">督办人员：</th>
+                                <td width="150" class="padding_r_25" style="padding-right:20px; padding-bottom:10px;">
+				    			 	<input type="hidden" name="unCancelledVisor" id="unCancelledVisor" value="">
+				    			 	<input type="hidden" name="supervisorIds" id="supervisorIds" value="">
+				    			 	<input type="hidden" name="detailId" id="detailId" value="">
+                                    <div class="common_txtbox_wrap ">
+                                        
+                                        
+                                            
+                                            
+                                                <input id="supervisorNames" name="supervisorNames" onclick="superviseNamesClick()" value="" type="text">
+                                            
+                                        
+								    </div>
+                                </td>
+			            	</tr>
+			            	<tr>
+			            		<!-- 流程期限 -->
+					            <th width="110" nowrap="nowrap" class=" padding_l_10">流程期限：</th>
+					            <td width="100">
+	                                
+	                                <div class="common_selectbox_wrap">
+				                        <select name="deadLine" id="deadLine" style="width: 100%" onchange="valiDeadAndLcqx(this)">
+								   			<option value="0" selected="" itemname="3">无</option><option value="-1">自定义</option>
+<option value="60" itemname="3">1小时</option>
+<option value="120" itemname="3">2小时</option>
+<option value="180" itemname="3">3小时</option>
+<option value="240" itemname="3">4小时</option>
+<option value="300" itemname="3">5小时</option>
+<option value="360" itemname="3">6小时</option>
+<option value="420" itemname="3">7小时</option>
+<option value="1440" itemname="3">1天</option>
+<option value="2880" itemname="3">2天</option>
+<option value="4320" itemname="3">3天</option>
+<option value="5760" itemname="3">4天</option>
+<option value="7200" itemname="3">5天</option>
+<option value="8640" itemname="3">6天</option>
+<option value="14400" itemname="3">10天</option>
+<option value="10080" itemname="3">1周</option>
+<option value="20160" itemname="3">2周</option>
+<option value="30240" itemname="3">3周</option>
+<option value="21600" itemname="3">半个月</option>
+<option value="43200" itemname="3">1个月</option>
+<option value="86400" itemname="3">2个月</option>
+<option value="129600" itemname="3">3个月</option>
+
+
+									    </select>
+								    </div>
+                                </td>
+                                <td width="140" style="padding-left:6px;">
+                                    <div id="deadLineCalender" style="display:none">
+	                                   <input id="deadLineDateTime" type="text" style="width:131px;" class="comp" comp="type:&#39;calendar&#39;,ifFormat:&#39;%Y-%m-%d %H:%M&#39;,showsTime:true,onUpdate:checkDeadLineDateTime" comptype="calendar" _inited="1"><span class="calendar_icon_area _autoBtn"><span class="calendar_icon" style="left:-20px;top:1px;position: absolute;"></span></span>
+	                                </div>
+	                                <input type="hidden" name="deadLineDateTimeHidden" id="deadLineDateTimeHidden" value="">
+                                </td>
+								<!-- 督办期限 -->
+                                <th nowrap="nowrap" class="padding_l_25">督办期限</th>
+                                <td class="padding_r_25" style="padding-right:20px;padding-bottom:10px;">
+                                    <div class="common_txtbox_wrap">
+                                        
+                                        
+                                            
+                                            
+                                                <input id="awakeDate" class="comp" value="" type="text" comp="type:&#39;calendar&#39;,ifFormat:&#39;%Y-%m-%d %H:%M&#39;,showsTime:true,onUpdate:checkAwakeDate" readonly="" comptype="calendar" _inited="1"><span class="calendar_icon_area _autoBtn"><span class="calendar_icon" style="left:-14px;top:1px;position: absolute;"></span></span>
+                                            
+                                        
+                                    </div>
+                                </td>
+			            	</tr>
+			            	<tr>
+			            		<!-- 提前提醒 -->
+					            <th nowrap="nowrap" class=" padding_l_10">提前提醒：</th>
+					            <td>
+	                                <div class="common_selectbox_wrap">
+	                                    
+	                                    <select name="advanceRemind" id="advanceRemind" style="width: 100%" onchange="valiDeadAndLcqx(this)">
+								   			<option value="0" selected="" itemname="5">无</option>
+<option value="5" itemname="5">5分钟</option>
+<option value="10" itemname="5">10分钟</option>
+<option value="15" itemname="5">15分钟</option>
+<option value="30" itemname="5">30分钟</option>
+<option value="60" itemname="5">1小时</option>
+<option value="120" itemname="5">2小时</option>
+<option value="180" itemname="5">3小时</option>
+<option value="240" itemname="5">4小时</option>
+<option value="480" itemname="5">8小时</option>
+<option value="720" itemname="5">0.5天</option>
+<option value="1440" itemname="5">1天</option>
+<option value="2880" itemname="5">2天</option>
+<option value="4320" itemname="5">3天</option>
+<option value="10080" itemname="5">1周</option>
+
+
+									    </select>
+					          	    </div>
+	                            </td>
+	                            <td>
+	                             
+                                </td><th nowrap="nowrap" class=" padding_l_25">督办主题</th>
+                                <td class="padding_r_25" style="padding:0 20px 10px 0px;">
+                                    
+                                    
+                                        
+                                        
+                                            <textarea class="w100b font_size12" title="" style="height: 24px;resize:none;width:148px;margin-left:0;" id="title" name="superviseTitle"></textarea>
+                                        
+                                    
+                                </td>
+			            	</tr>
+			            	<tr>
+			            		<td nowrap="nowrap" class="padding_l_10 padding_l_5" colspan="3" align="left">
+			            			<!-- 只有自由协同勾选了流程期限才可以勾选自动终止 -->
+                            	    <div class="common_checkbox_box clearfix left" style="padding-left:40px;text-align:left;display:inline-block;">
+							            <label class="hand" for="canAutostopflow">
+                                        <input id="canAutostopflow" value="1" name="canAutostopflow" disabled="" class="radio_com" type="checkbox">流程期限到时自动终止 </label>
+                            	    </div>
+                            	    <!-- 基准时长 -->
+                                	<div class="left padding_l_30" nowrap="nowrap" style="display:inline-block;">基准时长：
+                                		<span id="standdc" nowarp="nowarp">无
+                                	</span></div>
+                                </td>
+                            	
+			            		
+                                <td nowrap="nowrap" align="right">
+	                                	是否追溯流程：
+                                </td>
+                                <td id="canTrackWorkFlowTd">
+                                    
+                                	由撤销/回退人决定
+                                	
+                                	
+                                </td>
+                               <td></td>
+			            	</tr>
+			            </tbody></table>
+			            <div style="height:33px;overflow:hidden;">
+			            	  <!--Jerry start-->
+			            	<span style="display:inline-block; margin-left:88px; margin-top:10px;margin-bottom:5px;">
+			            		
+				            		<span class="font_size12 color_666 margin_r_20 hand" onclick="insertAttachmentPoi(&#39;Att&#39;)">
+				            			<span class="ico16 affix_16 margin_b_5"></span>
+				            			上传附件
+				            		</span>
+			            		
+			            		
+				            		<span class="font_size12 color_666 hand" onclick="quoteDocument(&#39;Doc1&#39;)">
+				            			<span class="ico16 associated_document_16 margin_b_5"></span>
+				            			关联文档
+				            		</span>
+								
+			            	</span>
+			            	
+			            	 <span class="padding_r_25 right" style="display:inline-block;text-align:right; margin-top:10px;margin-bottom:5px;">
+				            	<a id="show_more" class="clearfix" style="width:100px;"><span class="ico16 arrow_2_b"></span>展开</a>
+				            </span>
+			            
+			            <!--Jerry end-->
+			            </div>
+			            <div class="attachmentArea">
+			            <div id="attachmentTRAtt" style="display:none;">
+                        <table border="0" cellspacing="0" cellpadding="0" width="100%" class="line_height180">
+                            <tbody><tr id="attList">
+                                <td class="align_right" valign="top" style="width: 104px">
+                                	<div class="div-float margin_t_5">
+                                	<em class="ico16 affix_16"></em>
+                                	</div>
+                                </td>
+                                <td valign="top" width="30" nowrap="nowrap"><div class="div-float margin_t_5 margin_r_5">(<span id="attachmentNumberDivAtt"></span>) </div></td>
+                                <td class="align_left">
+                                    <div id="attFileDomain" class="comp" comp="type:&#39;fileupload&#39;,attachmentTrId:&#39;Att&#39;,applicationCategory:&#39;1&#39;,canFavourite:false,canDeleteOriginalAtts:true,originalAttsNeedClone:true,callMethod:&#39;insertAtt_AttCallback&#39;,delCallMethod:&#39;insertAtt_AttCallback&#39;,takeOver:false,noMaxheight:true" attsdata="[]" comptype="fileupload" style="display: none;"></div><div id="attachmentAreaAtt" style="overflow: auto; *font-size:0;overflow-x:hidden;" requrl="/seeyon/fileUpload.do?type=0&amp;applicationCategory=1&amp;extensions=&amp;maxSize=&amp;isEncrypt=&amp;popupTitleKey=&amp;attachmentTrId=Att&amp;callMethod=insertAtt_AttCallback&amp;takeOver=false" delcallmethod="insertAtt_AttCallback"></div><div style="display:none;"><iframe name="downloadFileFrame" id="downloadFileFrame" frameborder="0" width="0" height="0" src="./新建页面_files/saved_resource.html"></iframe></div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    <div id="attachment2TRDoc1" style="display:none; margin-top:4px;">
+                        <table border="0" cellspacing="0" cellpadding="0" width="100%" class="line_height180">
+                            <tbody><tr id="docList">
+                                <td class="align_right" valign="top" style="width: 104px"><div class="margin_t_5"><span class="ico16 associated_document_16"></span></div> </td>
+                                <td valign="top" width="30" nowrap="nowrap"><div class="div-float margin_t_5 margin_r_5">(<span id="attachment2NumberDivDoc1"></span>) </div></td>
+                                <td class="align_left">
+                                    <div class="comp" id="assDocDomain" comp="type:&#39;assdoc&#39;,attachmentTrId:&#39;Doc1&#39;,modids:&#39;1,3&#39;,applicationCategory:&#39;1&#39;,referenceId:&#39;&#39;,canDeleteOriginalAtts:true,originalAttsNeedClone:true,callMethod:&#39;insertAtt_AttCallback&#39;,delCallMethod:&#39;insertAtt_AttCallback&#39;,noMaxheight:true" attsdata="[]" comptype="assdoc" style="font-size: 0px;"></div><div id="attachment2AreaDoc1" poi="Doc1" callmethod="insertAtt_AttCallback" requesturl="/seeyon/ctp/common/associateddoc/assdocFrame.do?isBind=1,3&amp;referenceId=&amp;applicationCategory=1&amp;poi=Doc1" style="overflow: auto; *font-size:0;"></div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    </div>
+			           
+                </div>
+            </div>
+        <!--jsp:include page="/WEB-INF/jsp/common/content/content.jsp" /-->
+        
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  var _wfctxPath = '/seeyon';
+  var _ctxPath = '/seeyon';
+  var _wfcurrentUserId = '8845027544084465030'+'';
+  var hasWorkflowEvent = 'true';
+  var matchRequestToken= '-1584604151227791645';
+</script>
+<script type="text/javascript" src="./新建页面_files/workflowDesigner_ajax.js"></script>
+
+<script type="text/javascript" src="./新建页面_files/workflowDesigner_api-min.js"></script>
+
+
+<div id="workflow_definition" style="display: none">
+    
+    <input type="hidden" id="process_desc_by">
+    <input type="hidden" id="process_xml">
+    
+    <input type="hidden" id="readyObjectJSON">
+    
+    <input type="hidden" id="workflow_data_flag" name="workflow_data_flag" value="WORKFLOW_SEEYON">
+    
+    <input type="hidden" id="process_info">
+    
+    <input type="hidden" id="process_info_selectvalue">
+    
+    <input type="hidden" id="process_subsetting">
+    <input type="hidden" id="moduleType" value="1">
+    
+    <input type="hidden" id="workflow_newflow_input">
+    
+    <input type="hidden" id="process_rulecontent">
+    
+    <input type="hidden" id="workflow_node_peoples_input">
+    
+    <input type="hidden" id="workflow_node_condition_input">
+    <input type="hidden" id="processId" value="">
+    <input type="hidden" id="caseId" value="-1">
+    <input type="hidden" id="subObjectId" value="-1">
+    <input type="hidden" id="currentNodeId" value="-1">
+    
+    <input type="hidden" id="process_message_data">
+    
+    <input type="hidden" id="processChangeMessage">
+    
+    <input type="hidden" id="process_event">
+    
+    <input type="hidden" id="toReGo">
+    
+    <input type="hidden" id="dynamicFormMasterIds">
+</div>
+<script type="text/javascript">
+  $.content.getWorkflowDomains = function(moduleType, domains) {
+    if (!domains)
+      domains = [];
+    $("#workflow_definition #moduleType").val(moduleType);
+    domains.push("workflow_definition");
+    return domains;
+  };
+
+</script>
+        <textarea id="formTextId" class="hidden"></textarea>
+        <div class="overflow_auto" id="contentAndComment" style="overflow-y: auto; background: rgb(216, 217, 219); height: 1220px;">
+        <iframe id="zwIframe" name="zwIframe" style="border: 0px; width: 100%; height: 1220px; display: block;" frameborder="0" marginheight="0" marginwidth="0" onload="_contentSetText()" src="./新建页面_files/content.html"></iframe>
+       	 	<iframe id="zwOfficeIframe" hasload="false" name="zwOfficeIframe" src="./新建页面_files/collaboration.html" style="width: 100%; height: 1188px; display: none;" frameborder="0"></iframe>
+			
+		</div>
+           <div class="over_hidden" id="comment_deal" style="z-index:2; height: 41px; background:#d8d9db; width:100%; text-align:center;position:absolute;bottom:0;">
+				<input type="hidden" id="id" value="">
+	            <input type="hidden" id="pid" value="0">
+	            <input type="hidden" id="clevel" value="1"> <input type="hidden" id="path" value="00">
+	            <input type="hidden" id="moduleType" value="1">
+	            <input type="hidden" id="moduleId" value="-5800806588631070631">
+				<input type="hidden" id="extAtt1">
+	            <input type="hidden" id="relateInfo">
+	            <input type="hidden" id="ctype" value="-1">
+	            
+				<table style="border-top:1px solid #ccc;background:#f7f7f7;position: relative;width:786px;left: 50%;margin-left: -393px;" class="h100b" cellpadding="0" cellspacing="0" border="0">
+					<tbody><tr>
+						<td id="adtional" valign="middle" align="left" height="35" class="padding_t_5 font_size12">
+	                        <em id="adtional_ico" class="ico16 arrow_2_b msg_expansionIco margin_ico margin_b_5"></em>
+	                        <span class="adtional_text margin_t_5 font_size14 color_666">附言</span>
+						</td>
+					</tr>
+					<tr id="fuyan_area" class="hidden">
+						<td id="fuyan" valign="top" align="center" class="editadt_box padding_l_5">
+							<textarea style="width: 766px; padding: 0px 5px; font-size: 12px; min-height: 115px; color: rgb(163, 163, 163);" class="h100b" id="content_coll" name="content_coll" onclick="checkContent();" onblur="checkContentOut();"></textarea>
+						</td>
+					</tr>
+				</tbody></table>
+	        </div>
+        </div>
+        
+        
+        
+        	<div class="layout_east over_hidden" layout="minWidth:270,maxWidth:270,sprit:false" id="east1" style="height: 1365px; left: 512px; top: 41px; width: 350px; border-width: 1px; z-index: 1; display: block;">
+	        	<img id="hidden_side" class="shou" src="./新建页面_files/shou.jpg">
+	        	<span class="hide_span" style="font-size:12px;color:#333;" title="相
+关
+数
+据">相
+关
+数
+据</span><!-- 相<br/>关<br/>数<br/>据 -->
+	        	<span class="hide_span_people" style="font-size:12px;color:#333;" title="常
+用
+联
+系
+人">常
+用
+联
+系
+人</span><!--  常<br/>用<br/>联<br/>系<br/>人-->
+	        	<!--数据关联区域-->
+	        	
+	        		
+	        			 
+
+
+<script type="text/javascript" src="./新建页面_files/echarts-all.js"></script>
+<script type="text/javascript" src="./新建页面_files/seeyon.ui.reportEcharts.js"></script>
+
+<div id="guanlian_info_div" class="guanlian_info h100b">
+<div class="guanlian" style="display: none;">
+  <span class="ico24 associatedData_24"></span>
+</div>
+<div class="guanlian_msg" style="">
+  <div class="msg_title">
+      <div class="msg_function" onclick="fundescription()" style="font-size: 12px;">功能说明</div>
+      <div id="data_msg" style="font-weight: bold;font-size: 12px;margin-left: 60px;" title="相关数据">相关数据</div>
+  </div>
+  <div class="msg_body" style="height: 1332px;">
+    <div class="msg_body_info" style="position: relative; margin-bottom:20px;">
+      <!-- 数据填充区域 -->
+    <ul class="dr_item" id="829636687785446222">
+    <li class="msg_ul_title" style="">
+    <span class="title_span" title="我发起的数据（当前模板）">我发起的数据（当前模板）</span>
+    <span id="amore" class="amore_msg" title="更多" pid="829636687785446222" onclick="openMoreWin(this);">更多</span>
+    <div id="copyNote829636687785446222" class="right font_size12 copyFormNote" style="height:32px;line-height:32px;"><span class="ico16 handling_of_16"></span></div>
+    </li>
+    <li class="loading_li" style="display: none;"><img src="./新建页面_files/load.gif"></li>
+    <div class="display_none">
+      <li class="list_li">
+        <span class="margin_lr_5">·</span>
+        <span id="copyToForm" class="copyToLeftHover" onclick="copyFormData(this,event);" title="复制至当前模板">
+          <span class="ico16 toback_16 right margin_t_5"></span>
+        </span>
+      </li>
+    </div>
+  <li class="list_li" title="实习生填写工时(黄琳 2019-11-16 13:15)" pid="829636687785446222" index="0" onclick="openWin(this);">
+        <span class="margin_lr_5">·</span><span style="max-width:237px" class="grid_black dr_item_title ">实习生填写工时(黄琳 2019-11-16 13:15)</span><span class="ico16 office20_16"></span>
+        <span id="copyToForm" class="copyToLeftHover" onclick="copyFormData(this,event);" title="复制至当前模板" formappid="8584456628843137360" formrecordid="5291664631294399450">
+          <span class="ico16 toback_16 right margin_t_5"></span>
+        </span>
+      </li><li class="list_li" title="实习生填写工时(黄琳 2019-11-15 16:53)" pid="829636687785446222" index="1" onclick="openWin(this);">
+        <span class="margin_lr_5">·</span><span style="max-width:237px" class="grid_black dr_item_title ">实习生填写工时(黄琳 2019-11-15 16:53)</span><span class="ico16 office20_16"></span>
+        <span id="copyToForm" class="copyToLeftHover" onclick="copyFormData(this,event);" title="复制至当前模板" formappid="8584456628843137360" formrecordid="8542481635399078989">
+          <span class="ico16 toback_16 right margin_t_5"></span>
+        </span>
+      </li><li class="list_li" title="实习生填写工时(黄琳 2019-11-14 16:17)" pid="829636687785446222" index="2" onclick="openWin(this);">
+        <span class="margin_lr_5">·</span><span style="max-width:237px" class="grid_black dr_item_title ">实习生填写工时(黄琳 2019-11-14 16:17)</span><span class="ico16 office20_16"></span>
+        <span id="copyToForm" class="copyToLeftHover" onclick="copyFormData(this,event);" title="复制至当前模板" formappid="8584456628843137360" formrecordid="5557274276281603265">
+          <span class="ico16 toback_16 right margin_t_5"></span>
+        </span>
+      </li><li class="list_li" title="实习生填写工时(黄琳 2019-11-14 16:14)" pid="829636687785446222" index="3" onclick="openWin(this);">
+        <span class="margin_lr_5">·</span><span style="max-width:237px" class="grid_black dr_item_title ">实习生填写工时(黄琳 2019-11-14 16:14)</span><span class="ico16 office20_16"></span>
+        <span id="copyToForm" class="copyToLeftHover" onclick="copyFormData(this,event);" title="复制至当前模板" formappid="8584456628843137360" formrecordid="4682331117620098861">
+          <span class="ico16 toback_16 right margin_t_5"></span>
+        </span>
+      </li><li class="list_li" title="实习生填写工时(黄琳 2019-11-12 10:49)" pid="829636687785446222" index="4" onclick="openWin(this);">
+        <span class="margin_lr_5">·</span><span style="max-width:237px" class="grid_black dr_item_title ">实习生填写工时(黄琳 2019-11-12 10:49)</span><span class="ico16 office20_16"></span>
+        <span id="copyToForm" class="copyToLeftHover" onclick="copyFormData(this,event);" title="复制至当前模板" formappid="8584456628843137360" formrecordid="4848896605833542547">
+          <span class="ico16 toback_16 right margin_t_5"></span>
+        </span>
+      </li></ul></div>
+  </div>
+</div>
+<!-- 普通列表模板 -->
+<div id="listTpl" class="display_none">
+  <ul class="dr_item">
+    <li class="msg_ul_title" style="">
+    <span class="title_span"></span>
+    <span id="amore" class="amore_msg">更多</span>
+    <div id="copyFormNote" class="right font_size12 copyFormNote" style="height:32px;line-height:32px;"><span class="ico16 handling_of_16"></span></div>
+    </li>
+    <li class="loading_li" style="display: none"><img src="./新建页面_files/load.gif"></li>
+    <div class="display_none">
+      <li class="list_li">
+        <span class="margin_lr_5">·</span>
+        <span id="copyToForm" class="copyToLeftHover" onclick="copyFormData(this,event);" title="复制至当前模板">
+          <span class="ico16 toback_16 right margin_t_5"></span>
+        </span>
+      </li>
+    </div>
+  </ul>
+</div>
+<!-- 表格模板 -->
+<div id="tabTpl" class="display_none">
+  <ul class="dr_item">
+    <li class="msg_ul_title"><span class="title_span"></span> <a href="javascript:void(0);" id="amore" class="right font_size12">更多</a></li>
+    <li class="loading_li" style="display: none"><img src="./新建页面_files/load.gif"></li>
+    <div id="tab" class="display_none">
+       <li class="table_li">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="only_table margin_b_20">
+          <tbody><tr>
+            <th nowrap="nowrap"></th>
+          </tr>
+          <tr>
+            <td align="center" nowrap="nowrap"></td>
+          </tr>
+        </tbody></table>
+      </li>
+    </div>
+    <!-- 转置显示tab -->
+    <div id="vTab" class="display_none">
+      <li class="table_li">
+         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="only_table margin_b_20" style="border-bottom:none;">
+          <tbody><tr>
+            <th width="40" nowrap="nowrap"></th>
+            <td align="left" style="border-bottom:1px solid #D2D2D2;"></td>
+          </tr>
+        </tbody></table>
+      </li>
+    </div>
+  </ul>
+</div>
+
+<!-- 图片模板 -->
+<div id="chartTpl" class="display_none">
+  <ul class="dr_item">
+    <li class="msg_ul_title"><span class="title_span">板块名称</span> <a href="javascript:void(0);" id="amore" class="right font_size12">更多</a></li>
+    <li class="loading_li" style="display: none"><img src="./新建页面_files/load.gif"></li>
+    <div class="display_none">
+      <li class="chart_li">
+        <div>
+          <img class="chart_img" src="https://oa.momenta.works/seeyon/collaboration/collaboration.do?method=newColl&amp;templateId=-5800806588631070631&amp;from=templateNewColl">
+          <div class="chart_msg">
+            <span class="class_span blue_class"></span> 
+            <span class="class_name"></span> 
+            <span class="class_span red_class"></span> 
+            <span class="class_name"></span> 
+            <span class="class_span yellow_class"></span> 
+            <span class="class_name"></span> 
+            <span class="class_span green_class"></span> 
+            <span class="class_name"></span>
+          </div>
+          <p class="chart_title"></p>
+        </div>
+      </li>
+    </div>
+  </ul>
+</div>
+
+<div id="imgTpl" class="display_none">
+  <ul class="dr_item">
+    <li class="msg_ul_title"><span class="title_span"></span> <a href="javascript:void(0);" id="amore" class="right font_size12">更多</a></li>
+    <li class="loading_li" style="display: none"><img src="./新建页面_files/load.gif"></li>
+    <div class="display_none">
+      <li class="chart_li">
+        <div class="out_syytem">
+          <table class="w100b" border="0" cellspacing="0" cellpadding="0" style="border: 0;padding: 0;margin: 0;">
+            <tbody><tr>
+              <td class="chart_img_td" style="width: 60px;">
+                <img class="chart_img">
+              </td>
+              <td>
+                <p class="chart_title"></p>
+              </td>
+            </tr>
+          </tbody></table>
+         </div>
+      </li>
+    </div>
+  </ul>
+</div>
+
+<!-- 表格和图形组合 -->
+<div id="tab2img" class="display_none">
+  <ul class="dr_item">
+    <li class="msg_ul_title"><span class="title_span">板块名称</span> <a href="javascript:void(0);" id="amore" class="right font_size12">更多</a></li>
+    <li class="loading_li" style="display: none"><img src="./新建页面_files/load.gif"></li>
+    <!-- 普通表格 -->
+    <div id="tab" class="display_none">
+       <li class="table_li">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="only_table margin_b_20">
+          <tbody><tr>
+            <th width="40" nowrap="nowrap"></th>
+          </tr>
+          <tr>
+            <td align="left" nowrap="nowrap"></td>
+          </tr>
+        </tbody></table>
+      </li>
+    </div>
+    <!-- 转置显示tab -->
+    <div id="vTab" class="display_none">
+      <li class="table_li">
+         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="only_table margin_b_20" style="border-bottom:none;">
+          <tbody><tr>
+            <th width="40" nowrap="nowrap"></th>
+            <td align="left" style="border-bottom:1px solid #D2D2D2;"></td>
+          </tr>
+        </tbody></table>
+      </li>
+    </div>
+     <!-- 报表图模板 -->
+    <div id="img" class="display_none">
+      <li class="chart_li">
+        <div style="overflow: auto;">
+          <div id="chartIndex" class="chart_img"></div>
+          <p class="chart_title"></p>
+        </div>
+      </li>
+    </div>
+  </ul>
+</div>
+
+</div>
+	        		
+	        		
+	        	
+       		</div>
+        
+    </div>
+</form>
+
+
+<script type="text/javascript" src="./新建页面_files/echarts-all.js"></script>
+<script type="text/javascript" src="./新建页面_files/seeyon.ui.reportEcharts.js"></script>
+
+
+<script type="text/javascript">
+OfficeObjExt.showExt = newColOfficeObjExtshowExt;
+</script>
+
+
+<div id="toolTip_732135606" class="tooltip" style="display: none; position: absolute; width: 200px; z-index: 5000; left: 515px; top: 463px;"><div class="tooltip_border"><span><em class="tooltip_em" style="top: -5px; right: 10px; background-position: 0px -166px;"></em></span><div class="tooltip_text"><div style="font-size:12px; color:green;">【复制数据】<br>1、复制同一表单的模板已产生数据至当前模板<br>2、通过点击标题后的图标，实现复制数据</div></div></div></div></body></html>

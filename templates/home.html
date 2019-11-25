@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="responsive, template, portfolio, html, css, javascript, Theme" />
+    <meta name="author" content="">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+
+    <title>焊缝缺陷检测系统</title>
+
+    <!--favicon icon-->
+    <link rel="icon" href="../static/images/favicon.png">
+
+    <!--google font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+    <!-- font awesome css -->
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+
+    <!-- iconmind icon css -->
+    <link rel="stylesheet" href="../static/css/iconmind-line.css">
+
+    <!--bootstrap min css-->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+
+    <!--owl carousel min css-->
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+
+    <!--nice select css-->
+    <link rel="stylesheet" href="../static/css/nice-select.css">
+
+    <!--Padding margin css-->
+    <link rel="stylesheet" href="../static/css/padding.margin.css">
+
+
+    <!-- style css -->
+    <link rel="stylesheet" href="../static/css/asset/shortcode-common.css">
+    <link rel="stylesheet" href="../static/css/asset/typography.css">
+    <link rel="stylesheet" href="../static/css/asset/accordion.css">
+    <link rel="stylesheet" href="../static/css/asset/alert.css">
+    <link rel="stylesheet" href="../static/css/asset/button.css">
+    <link rel="stylesheet" href="../static/css/asset/input.css">
+    <link rel="stylesheet" href="../static/css/asset/c2action.css">
+    <link rel="stylesheet" href="../static/css/asset/testimonial.css">
+    <link rel="stylesheet" href="../static/css/asset/carousel.css">
+    <link rel="stylesheet" href="../static/css/asset/client.css">
+    <link rel="stylesheet" href="../static/css/asset/color.css">
+    <link rel="stylesheet" href="../static/css/asset/faq.css">
+    <link rel="stylesheet" href="../static/css/asset/grid-systerm.css">
+    <link rel="stylesheet" href="../static/css/asset/pricing.css">
+    <link rel="stylesheet" href="../static/css/asset/progressbar.css">
+    <link rel="stylesheet" href="../static/css/asset/table.css">
+    <link rel="stylesheet" href="../static/css/asset/tab.css">
+    <link rel="stylesheet" href="../static/css/asset/team.css">
+    <link rel="stylesheet" href="../static/css/asset/testimonial.css">
+    <link rel="stylesheet" href="../static/css/asset/navbar.css">
+
+    <!--responsive css-->
+    <link rel="stylesheet" href="../static/css/asset/shortcode-responsive.css">
+
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <!-- =========================================Start header section== =======================================-->
+    <header class="presentation_header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="#" class="logo"> <h2 class="pt_6">焊缝缺陷检测系统</h2></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- =========================================End header section=========================================-->
+
+
+    <!-- =========================================Start Sidebar section== =======================================-->
+    <div class="presentation_sidebar">
+        <div class="toggle_arrow">
+            <i class="fa fa-angle-left"></i>
+            <i class="fa fa-angle-right"></i>
+        </div>
+        <ul>
+            <li><a href="#datainput" class="anchor">数据输入</a></li>
+            <li><a href="#searchpath" class="anchor">查找图像</a></li>
+            <li><a href="#choosemodel" ckass="anchor">模型选择</a></li>
+        </ul>
+    </div>
+    <!-- =========================================End Sidebar section=========================================-->
+
+
+    <!-- =========================================Start dataInput section=========================================-->
+    <div id="datainput">
+<!-- =======================================
+        ==Start Input style section==
+    =======================================-->
+
+
+<section class="inputfield_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="pt_90">数据输入</h1>
+                        <span class="sectionSubtitle mb_50 pb_10 d_block fw_300">源数据输入的预处理</span>
+                        <h4 class="fw_400 color_44 mb_50">请输入图像数据和标注数据的绝对路径</h4>
+
+
+                        <form action="#" class="input_style2">
+                            <div class="group">
+                                <label> 图像数据路径 :</label>
+                                <input class="input1" type="text" name="name" placeholder="eg: data/welddata">
+                            </div>
+                            <div class="group">
+                                <label> 标注数据路径 :</label>
+                                <input class="input2" type="text" name="name2" placeholder="eg: label.csv">
+                            </div>
+
+                        </form>
+
+                        <div class="group mt_25">
+                               <button type="submit" class="button4 bg_f9b radius_50 col-md-5">确定输入数据</button>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+</div>
+    <!-- =========================================End dataInput section=========================================-->
+
+
+
+    <!-- =========================================Start searchPath section=========================================-->
+
+<!-- =======================================
+        ==Start Input style section==
+    =======================================-->
+   <div id="searchpath">
+<section class="inputfield_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="pt_90">查找图像</h1>
+                        <span class="sectionSubtitle mb_50 pb_10 d_block fw_300">通过图像名称查找切割成果</span>
+                        <h4 class="fw_400 color_44 mb_50">输入图像名称</h4>
+
+
+                        <form action="#" class="input_style2">
+                            <div class="group">
+                                <label>图像名称:</label>
+                                <input class="input1" type="text" name="name" placeholder="eg: 583.jpg">
+                            </div>
+                        </form>
+
+                        <div class="group mt_25">
+                               <button type="submit" class="button4 bg_f9b radius_50 col-md-5">查找</button>
+                            </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="main">
+                        <div class="col-sm-12">
+                            <div class = "group mt_25" style="word-spacing:100px">
+                                <div class="col-md-1 col-sm-6">
+                                    <label></label>
+                                    <a href="#" class="logo"><img src="../static/images/leftnext1.png" alt="logo" height="50" width="50"></a>
+                                </div>
+
+                                <div class="col-md-3 col-sm-6">
+                                    <label>源图像：</label>
+                                    <a href="#" class="logo"><img src="../static/images/carousel2.jpg" alt="logo" ></a>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <label>切割1：</label>
+                                    <a href="#" class="logo"><img src="../static/images/carousel2.jpg" alt="logo" ></a>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <label>切割2：</label>
+                                    <a href="#" class="logo"><img src="../static/images/carousel2.jpg" alt="logo"></a>
+                                </div>
+                                <div class="col-md-1 col-sm-6">
+                                    <label></label>
+                                    <a href="#" class="logo"><img src="../static/images/rightnext.png" alt="logo" height="50" width="50"></a>
+                                </div>
+
+                                </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+        <section class="flick_table">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="group mt_25">
+                    <div class="table_style1 table_style2 table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>图像名称</th>
+                                <th>缺陷类别</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3452.jpg</td>
+                                <td>圆缺，条缺，气孔</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="group mt_25">
+
+                 </div>
+    </div>
+</section>
+
+        <section class="selectbox_section">
+    <div class="container">
+        <div class="row">
+            <div class="group mt_25">
+                 <div class="col-md-4">
+                     <div class="selectStyle2">
+                            <select name="" id="">
+                                <option value="">请选择切割结果</option>
+                                <option value="method1">第一种切割结果</option>
+                                <option value="method2">第二种切割结果</option>
+                                <option value="none">都不选择，待手动切割</option>
+                            </select>
+                    </div>
+                </div>
+                    <button type="submit" class="button4 bg_f9b radius_50 col-md-2">确定</button>
+
+            </div>
+
+        </div>
+
+        <div class="group mt_25"></div>
+    </div>
+</section>
+</div>
+    <!-- =========================================End searchPath section=========================================-->
+
+    <!-- =========================================Start select model section=========================================-->
+
+<!-- =======================================
+        ==Start select model  section==
+    =======================================-->
+
+<div id="choosemodel">
+    <section class="special_input">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                 <h1 class="pt_90">模型选择</h1>
+                        <span class="sectionSubtitle mb_50 pb_10 d_block fw_300">选择数据处理方式以及卷积神经网络模型</span>
+                        <h4 class="fw_400 color_44 mb_50">选择数据处理方式</h4>
+                <ul>
+                    <li class="checkbox_style">
+                        <div class="group">
+                            <input type="checkbox" id="checkbox11" name="checkbox" />
+                            <label for="checkbox11"><span></span>直接压缩成正方形</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="checkbox" id="checkbox12" name="checkbox" />
+                            <label for="checkbox12"><span></span>切割成八层数据</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="checkbox" id="checkbox13" name="checkbox" />
+                            <label for="checkbox13"><span></span>整张图</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="group mt_25"></div>
+    </div>
+</section>
+
+    <section class="special_input">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                        <h4 class="fw_400 color_44 mb_50">选择卷积神经网络模型</h4>
+                <ul>
+                    <li class="checkbox_style">
+                        <div class="group">
+                            <input type="checkbox" id="checkbox21" name="checkbox" />
+                            <label for="checkbox21"><span></span>LeNet-5变体网络</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="checkbox" id="checkbox22" name="checkbox" />
+                            <label for="checkbox22"><span></span>AlexNet网络</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="checkbox" id="checkbox23" name="checkbox" />
+                            <label for="checkbox23"><span></span>VGG-11</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="checkbox" id="checkbox24" name="checkbox" />
+                            <label for="checkbox24"><span></span>VGG-13</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="checkbox" id="checkbox25" name="checkbox" />
+                            <label for="checkbox25"><span></span>VGG-16</label>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="group mt_25">
+        </div>
+    </div>
+</section>
+
+        <section class="special_input">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                        <h4 class="fw_400 color_44 mb_50">选择激活函数</h4>
+                <ul>
+                    <li class="checkbox_style">
+                        <div class="group">
+                            <input type="checkbox" id="checkbox31" name="checkbox" />
+                            <label for="checkbox31"><span></span>Sigmoid</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="checkbox" id="checkbox32" name="checkbox" />
+                            <label for="checkbox32"><span></span>Leaky_Relu</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="group mt_25">
+            <button type="submit" class="button4 bg_f9b radius_50 col-md-5">提交</button>
+        </div>
+
+
+    </div>
+</section>
+
+    <section class="flick_table">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="fw_400 color_44 mb_50"></h4>
+                <div class="table_style1 table_style2 table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>训练集</th>
+                                <th>测试集</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>82.5%</td>
+                                <td>56.75%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="group mt_25">
+        </div>
+    </div>
+</section>
+
+</div>
+ <!-- =========================================End select model section=========================================-->
+
+</body>
+</html>
+

@@ -1,0 +1,237 @@
+ #summaryHead .guanlian_info{
+    position: absolute;
+    right: 0px;
+    top: -1px;
+    display: inline-block;
+    z-index: 99;
+    width: auto;
+    /* min-width: 43px; */
+}
+.guanlian_info{
+    width: 100%;
+}
+.guanlian{
+    width: 43px;
+    height: 39px;
+    background:#82c2d9;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: absolute;
+    left: -43px;
+    top: 0;
+}
+.guanlian span{
+position:relative;
+top:8px;
+left:10px;
+}
+#summaryHead .guanlian_msg{
+    margin-top: -5px;
+    border: 1px solid #e6e6e6;
+    width: 345px;
+}
+.guanlian_msg{
+    width: 100%;
+    height: auto;
+    background: #fff;
+    position: relative;
+}
+.msg_body{
+    margin:0 10px;
+    overflow-y:auto; 
+}
+.msg_body_info{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.msg_title{
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
+    color: #555;
+    background: #f5f6f7;
+    text-align: center;
+}
+.msg_function{
+    font-size: 14px;
+    color: #555;
+    background: #f5f6f7;
+    text-align: right;
+    color: #296fbe;
+    cursor: pointer;
+    float:right;
+    margin-right: 20px
+}
+.msg_ul_title{
+    height: 32px;
+    line-height: 32px;
+    border-top: 2px solid #5191d1;
+    margin: 0px 10px;
+}
+.msg_ul_title span{
+    font-size: 14px;
+    color: #333;
+}
+.copyFormNote span.ico16{
+    margin-top: -4px;
+    margin-right: 2px;
+}
+.table_li{
+	margin:0 10px;
+    overflow: auto;
+}
+
+.list_li{
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    color: #666;
+    padding: 0px 10px;
+}
+.list_li span.copyToLeftHover{
+    display: none;
+}
+.list_li:hover span.copyToLeftHover{
+    display: inline;
+}
+
+.list_li .dr_item_title{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.only_table{
+    border-bottom-width: 0px;
+}
+.only_table td{
+    border-bottom-width: 1px;
+    border-bottom-style:solid;
+    border-bottom-color:#d2d2d2;
+    background-color: #f5f6f9;
+}
+
+.only_table th{
+    background-color: #e6e6e7;
+}
+
+.guanlian_msg .only_table tr th,.guanlian_msg .only_table tr td{
+    height: 30px;
+    line-height: 30px;
+    word-break:normal;
+    word-wrap:normal;
+    white-space:nowrap;
+    /*text-align: center;*/
+}
+.chart_li{
+    text-align: center;
+}
+.chart_li div{
+    /* padding: 0 18px; */
+}
+.chart_li div span{
+    color:#666666;
+    font-size: 12px;
+}
+.chart_img{
+    width: 277px;
+    height: 260px;
+    display: inline-block;
+    margin-top: 5px;
+}
+.chart_msg{
+    margin-top: 7px;
+}
+.class_span{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+.blue_class{
+    background: #768fc7;
+}
+.red_class{
+    background: #e98aac;
+}
+.yellow_class{
+    background: #f3de94;
+}
+.green_class{
+    background: #8dccdd;
+}
+.class_name,.chart_title{
+    font-size: 14px;
+    color: #333;
+   
+}
+.class_name{
+    margin-right: 10px;
+}
+.chart_title{
+    /* margin-top: 10px; */
+    margin-bottom: 15px;
+}
+.msg_body ul{
+    margin-top: 20px;
+}
+
+.loading_li{
+   text-align: center;
+}
+.out_syytem{
+	padding:0 10px;
+	overflow:hidden;
+}
+.out_syytem .chart_img{
+	width:60px;
+	height:60px;
+	float:left;
+}
+.out_syytem .chart_title{
+	text-align:left;
+	margin:0;
+	color:#666;
+}
+.out_syytem .chart_title_p{
+	width:100%;
+	display:inline-block;
+	text-align:center;
+	padding:2px 0px 8px 0px;
+	font-size:14px;
+	color:#333;
+}
+.out_syytem span{
+	/* height:25px; */
+	line-height:25px;
+	display:inline-block;
+	text-align:left;
+}
+#guanlian_info_div .msg_body_info .list_li:hover{
+	color: #296fbe;
+	cursor: pointer;
+}
+
+.out_syytem p:hover{
+	color: #296fbe;
+	cursor: pointer;
+}
+.out_syytem img:hover{
+	cursor: pointer;
+}
+.out_syytem span:hover{
+	color: #296fbe;
+	cursor: pointer;
+}
+.amore_msg{
+    font-size: 12px !important;
+    color: #555 !important;
+    text-align: right;
+    color: #296fbe !important;
+    cursor: pointer;
+    float:right;
+}
