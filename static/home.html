@@ -13,56 +13,56 @@
     <title>焊缝缺陷检测系统</title>
 
     <!--favicon icon-->
-    <link rel="icon" href="../static/images/favicon.png">
+    <link rel="icon" href="images/favicon.png">
 
     <!--google font-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 
     <!-- font awesome css -->
-    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
     <!-- iconmind icon css -->
-    <link rel="stylesheet" href="../static/css/iconmind-line.css">
+    <link rel="stylesheet" href="css/iconmind-line.css">
 
     <!--bootstrap min css-->
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!--owl carousel min css-->
-    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
 
     <!--nice select css-->
-    <link rel="stylesheet" href="../static/css/nice-select.css">
+    <link rel="stylesheet" href="css/nice-select.css">
 
     <!--Padding margin css-->
-    <link rel="stylesheet" href="../static/css/padding.margin.css">
+    <link rel="stylesheet" href="css/padding.margin.css">
 
 
     <!-- style css -->
-    <link rel="stylesheet" href="../static/css/asset/shortcode-common.css">
-    <link rel="stylesheet" href="../static/css/asset/typography.css">
-    <link rel="stylesheet" href="../static/css/asset/accordion.css">
-    <link rel="stylesheet" href="../static/css/asset/alert.css">
-    <link rel="stylesheet" href="../static/css/asset/button.css">
-    <link rel="stylesheet" href="../static/css/asset/input.css">
-    <link rel="stylesheet" href="../static/css/asset/c2action.css">
-    <link rel="stylesheet" href="../static/css/asset/testimonial.css">
-    <link rel="stylesheet" href="../static/css/asset/carousel.css">
-    <link rel="stylesheet" href="../static/css/asset/client.css">
-    <link rel="stylesheet" href="../static/css/asset/color.css">
-    <link rel="stylesheet" href="../static/css/asset/faq.css">
-    <link rel="stylesheet" href="../static/css/asset/grid-systerm.css">
-    <link rel="stylesheet" href="../static/css/asset/pricing.css">
-    <link rel="stylesheet" href="../static/css/asset/progressbar.css">
-    <link rel="stylesheet" href="../static/css/asset/table.css">
-    <link rel="stylesheet" href="../static/css/asset/tab.css">
-    <link rel="stylesheet" href="../static/css/asset/team.css">
-    <link rel="stylesheet" href="../static/css/asset/testimonial.css">
-    <link rel="stylesheet" href="../static/css/asset/navbar.css">
+    <link rel="stylesheet" href="css/asset/shortcode-common.css">
+    <link rel="stylesheet" href="css/asset/typography.css">
+    <link rel="stylesheet" href="css/asset/accordion.css">
+    <link rel="stylesheet" href="css/asset/alert.css">
+    <link rel="stylesheet" href="css/asset/button.css">
+    <link rel="stylesheet" href="css/asset/input.css">
+    <link rel="stylesheet" href="css/asset/c2action.css">
+    <link rel="stylesheet" href="css/asset/testimonial.css">
+    <link rel="stylesheet" href="css/asset/carousel.css">
+    <link rel="stylesheet" href="css/asset/client.css">
+    <link rel="stylesheet" href="css/asset/color.css">
+    <link rel="stylesheet" href="css/asset/faq.css">
+    <link rel="stylesheet" href="css/asset/grid-systerm.css">
+    <link rel="stylesheet" href="css/asset/pricing.css">
+    <link rel="stylesheet" href="css/asset/progressbar.css">
+    <link rel="stylesheet" href="css/asset/table.css">
+    <link rel="stylesheet" href="css/asset/tab.css">
+    <link rel="stylesheet" href="css/asset/team.css">
+    <link rel="stylesheet" href="css/asset/testimonial.css">
+    <link rel="stylesheet" href="css/asset/navbar.css">
 
     <!--responsive css-->
-    <link rel="stylesheet" href="../static/css/asset/shortcode-responsive.css">
+    <link rel="stylesheet" href="css/asset/shortcode-responsive.css">
 
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <!-- =========================================Start header section== =======================================-->
@@ -86,10 +86,8 @@
         </div>
         <ul>
             <li><a href="#datainput" class="anchor">数据输入</a></li>
-            <li><a href="#searchpath" class="anchor">原始图像合格判断</a></li>
-            <li><a href="#cutsearchpath" class="anchor">切割图像合格判断</a></li>
-            <li><a href="#choosemodel" class="anchor">模型选择</a></li>
-            <li><a href="#result" class="anchor">结果展示</a></li>
+            <li><a href="#searchpath" class="anchor">查找图像</a></li>
+            <li><a href="#choosemodel" ckass="anchor">模型选择</a></li>
         </ul>
     </div>
     <!-- =========================================End Sidebar section=========================================-->
@@ -103,9 +101,6 @@
 
 
 <section class="inputfield_section">
-            <div class="group mt_40">
-
-                 </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -138,7 +133,8 @@
     <!-- =========================================End dataInput section=========================================-->
 
 
-     <!-- =========================================Start searchPath section=========================================-->
+
+    <!-- =========================================Start searchPath section=========================================-->
 
 <!-- =======================================
         ==Start Input style section==
@@ -148,8 +144,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="pt_90">原始图像合格判断</h1>
-                        <span class="sectionSubtitle mb_50 pb_10 d_block fw_300">定位到某图像并可前后切换判断图像是否可以作为合格的样本数据</span>
+                        <h1 class="pt_90">查找图像</h1>
+                        <span class="sectionSubtitle mb_50 pb_10 d_block fw_300">通过图像名称查找切割成果</span>
                         <h4 class="fw_400 color_44 mb_50">输入图像名称</h4>
 
 
@@ -159,7 +155,6 @@
                                 <input class="input1" type="text" name="name" placeholder="eg: 583.jpg">
                             </div>
                         </form>
-
 
                         <div class="group mt_25">
                                <button type="submit" class="button4 bg_f9b radius_50 col-md-5">查找</button>
@@ -173,176 +168,28 @@
                             <div class = "group mt_25" style="word-spacing:100px">
                                 <div class="col-md-1 col-sm-6">
                                     <label></label>
-                                    <a href="#" class="logo"><img src="../static/images/leftnext1.png" alt="logo" height="50" width="50"></a>
+                                    <a href="#" class="logo"><img src="images/leftnext1.png" alt="logo" height="50" width="50"></a>
                                 </div>
 
-
-                                <div class="col-md-5 col-sm-6">
-                                    <a href="#" class="logo"><img src="../static/images/weld_origin_image-1.png" alt="logo" ></a>
+                                <div class="col-md-3 col-sm-6">
+                                    <label>源图像：</label>
+                                    <a href="#" class="logo"><img src="images/carousel2.jpg" alt="logo" ></a>
                                 </div>
-
-                                <div class="col-md-1 col-sm-6">
-                                    <label></label>
-                                    <a href="#" class="logo"><img src="../static/images/rightnext.png" alt="logo" height="50" width="50"></a>
+                                <div class="col-md-3 col-sm-6">
+                                    <label>线性拟合切割</label>
+                                    <a href="#" class="logo"><img src="images/carousel2.jpg" alt="logo" ></a>
                                 </div>
-
-                                </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-        <section class="flick_table">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="group mt_25">
-                    <div class="table_style1 table_style2 table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>图像名称</th>
-                                <th>缺陷类别</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>3452.jpg</td>
-                                <td>圆缺</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="group mt_25">
-
-                 </div>
-        <div class="group mt_25">
-
-                 </div>
-    </div>
-</section>
-
-        <section class="selectbox_section">
-    <div class="container">
-        <div class="row">
-            <div class="group mt_25">
-                 <div class="col-md-4">
-                     <div class="selectStyle2">
-                            <select name="" id="">
-                                <option value="">请选择样本是否合格</option>
-                                <option value="method1">样本合格</option>
-                                <option value="method2">样本不合格</option>
-                            </select>
-                    </div>
-                </div>
-                    <button type="submit" class="button4 bg_f9b radius_50 col-md-2">确定</button>
-            </div>
-
-        </div>
-
-        <div class="group mt_25"></div>
-    </div>
-</section>
-</div>
-    <!-- =========================================End searchPath section=========================================-->
-
-
-
-
-    <!-- =========================================Start cutsearchPath section=========================================-->
-
-<!-- =======================================
-        ==Start Input style section==
-    =======================================-->
-   <div id="cutsearchpath">
-<section class="inputfield_section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="pt_90">切割图像合格判断</h1>
-                        <span class="sectionSubtitle mb_50 pb_10 d_block fw_300">通过图像名称查找切割成果并判断切割合理性</span>
-                        <h4 class="fw_400 color_44 mb_50">输入图像名称</h4>
-
-
-                        <form action="#" class="input_style2">
-                            <div class="group">
-                                <label>图像名称:</label>
-                                <input class="input1" type="text" name="name" placeholder="eg: 583.jpg">
-                            </div>
-                        </form>
-
-
-                         <form action="#" class="input_style2">
-                            <div class="group">
-                                <label>线性拟合度:</label>
-                                <input class="input2" type="text" name="name" placeholder="eg: 12">
-                            </div>
-                        </form>
-
-                        <div class="group mt_25">
-                               <button type="submit" class="button4 bg_f9b radius_50 col-md-5">查找</button>
-                            </div>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="main">
-
-
-                        <div class="col-sm-12">
-                            <div class = "group mt_25" style="word-spacing:100px">
-                                <div class="col-md-1 col-sm-6">
-                                </div>
-                                 <div class="col-md-9 col-sm-6">
-                                    <label>未切割源图像: </label>
-                                    <a href="#" class="logo"><img src="../static/images/weld_origin_image-1.png" alt="logo"  width="500"></a>
-                                </div>
-                                 <div class="col-md-1 col-sm-6">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class = "group mt_25" style="word-spacing:100px">
-                                <div class="col-md-1 col-sm-6">
-                                    <label></label>
-                                    <a href="#" class="logo"><img src="../static/images/leftnext1.png" alt="logo" height="50" width="50"></a>
-                                </div>
-
-
-                                <div class="col-md-9 col-sm-6">
-                                    <label>线性拟合切割: </label>
-                                    <a href="#" class="logo"><img src="../static/images/entropy-after-cut-2.png" alt="logo" ></a>
-                                </div>
-
-                                <div class="col-md-1 col-sm-6">
-                                    <label></label>
-                                    <a href="#" class="logo"><img src="../static/images/rightnext.png" alt="logo" height="50" width="50"></a>
-                                </div>
-
-                                </div>
-
-                        </div>
-                        <div class="col-sm-12">
-                            <div class = "group mt_25" style="word-spacing:100px">
-                                <div class="col-md-1 col-sm-6">
-                                </div>
-                                 <div class="col-md-9 col-sm-6">
+                                <div class="col-md-3 col-sm-6">
                                     <label>最大熵切割：</label>
-                                    <a href="#" class="logo"><img src="../static/images/linear-regression-after-cut-3.png" alt="logo"  width="500"></a>
+                                    <a href="#" class="logo"><img src="images/carousel2.jpg" alt="logo"></a>
                                 </div>
-                                 <div class="col-md-1 col-sm-6">
+                                <div class="col-md-1 col-sm-6">
+                                    <label></label>
+                                    <a href="#" class="logo"><img src="images/rightnext.png" alt="logo" height="50" width="50"></a>
                                 </div>
-                            </div>
+
+                                </div>
+
                         </div>
                     </div>
 
@@ -369,7 +216,7 @@
                         <tbody>
                             <tr>
                                 <td>3452.jpg</td>
-                                <td>圆缺</td>
+                                <td>圆缺，条缺，气孔</td>
                             </tr>
                         </tbody>
                     </table>
@@ -392,9 +239,8 @@
                      <div class="selectStyle2">
                             <select name="" id="">
                                 <option value="">请选择切割结果</option>
-                                <option value="method1">第一种切割结果合格</option>
-                                <option value="method2">第二种切割结果合格</option>
-                                <option value="method3">第一、二种切割结果均合格</option>
+                                <option value="method1">第一种切割结果</option>
+                                <option value="method2">第二种切割结果</option>
                                 <option value="none">都不选择，待手动切割</option>
                             </select>
                     </div>
@@ -408,7 +254,7 @@
     </div>
 </section>
 </div>
-    <!-- =========================================End cutsearchPath section=========================================-->
+    <!-- =========================================End searchPath section=========================================-->
 
     <!-- =========================================Start select model section=========================================-->
 
@@ -439,11 +285,6 @@
                         <div class="group">
                             <input type="checkbox" id="checkbox13" name="checkbox" />
                             <label for="checkbox13"><span></span>整张图</label>
-                        </div>
-
-                        <div class="group">
-                            <input type="checkbox" id="checkbox14" name="checkbox" />
-                            <label for="checkbox14"><span></span>缺陷切片图</label>
                         </div>
                     </li>
                 </ul>
@@ -517,20 +358,7 @@
     </div>
 </section>
 
-
-</div>
- <!-- =========================================End select model section=========================================-->
-
-    <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="pt_90">结果展示</h1>
-                        <span class="sectionSubtitle mb_50 pb_10 d_block fw_300">展示所选模型及数据处理进行训练和测试的结果</span>
-                    </div>
-                </div>
-    </div>
-    <div id="result">
-            <section class="flick_table">
+    <section class="flick_table">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -636,34 +464,31 @@
         <div class="group mt_25">
 
         </div>
-        <div class="group mt_25">
-
-        </div>
-        <div class="group mt_25">
-
-        </div>
     </div>
 </section>
-        </div>
+
+
+</div>
+ <!-- =========================================End select model section=========================================-->
 
      <!-- jQuary library -->
-    <script type="text/javascript" src="../static/js/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="../static/js/modernizr-2.6.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
 
     <!--bootstrap min js-->
-    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
     <!--owl carousel min js-->
-    <script type="text/javascript" src="../static/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
 
     <!--waypoint js-->
-    <script type="text/javascript" src="../static/js/waypoints.min.js"></script>
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
 
     <!--nice select js-->
-    <script type="text/javascript" src="../static/js/jquery.nice-select.min.js"></script>
+    <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
 
     <!-- all jQuary activation code here and always it will be bottom of all script tag -->
-    <script type="text/javascript" src="../static/js/main.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
     <script>
         $(".anchor").on("click", function(event) {
             var target = $($(this).attr("href"));

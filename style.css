@@ -54,7 +54,7 @@ header.presentation_header {
     padding: 120px 0 50px;
     position: fixed;
     top: 0;
-    width: 200px;
+    width: 300px;
     z-index: 2;
     -webkit-transition: left 0.3s linear;
     -moz-transition: left 0.3s linear;
@@ -63,7 +63,7 @@ header.presentation_header {
     transition: left 0.3s linear;
 }
 .presentation_sidebar.off {
-  left: -200px;
+  left: -300px;
 }
 .presentation_sidebar > ul {
   overflow-y: auto;
@@ -153,7 +153,7 @@ header.presentation_header {
 
 @media (max-width: 767px){
     header.presentation_header {
-        padding: 25px 15px;
+        padding: 25px 10px;
     }
     .presentation_header .header_right ul li a {
         background: none!important;
